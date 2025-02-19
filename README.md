@@ -1,5 +1,6 @@
 # Red Ai Range
 
+![](./frontend/public/redai.png)
 
 A comprehensive platform designed to explore AI vulnerabilities and support red teaming exercises. Red Ai Cyber Range offers realistic training environments where security professionals can simulate attacks, detect weaknesses, and enhance system resilience.
 
