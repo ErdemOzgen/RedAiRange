@@ -1,0 +1,8 @@
+services:
+  uptime-kuma:
+    image: erdemozgen/uptime-kuma:1
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "3001:3001"
+    restart: always

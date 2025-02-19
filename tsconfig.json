@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "strict": true,
+        "moduleResolution": "bundler",
+        "skipLibCheck": true
+    },
+    "include": [
+        "backend/**/*",
+        "common/**/*"
+    ]
+}
