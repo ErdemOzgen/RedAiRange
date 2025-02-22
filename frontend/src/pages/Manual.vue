@@ -1,8 +1,8 @@
 <template>
     <div class="manual-page">
-        <!-- Sidebar: Markdown dosyalarının listesi -->
+        <!-- Sidebar: List of Markdown files -->
         <div class="manual-sidebar">
-            <h2>Dosyalar</h2>
+            <h2>Files</h2>
             <ul>
                 <li
                     v-for="file in files"
@@ -15,7 +15,7 @@
             </ul>
         </div>
 
-        <!-- İçerik: Render edilmiş markdown -->
+        <!-- Content: Rendered markdown -->
         <div class="manual-content" v-html="activeFileContent"></div>
     </div>
 </template>
@@ -25,8 +25,8 @@ import { marked } from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 
-// Marked için highlight.js entegrasyonu:
-// Eğer marked v4+ kullanıyorsanız, marked.use() metodunu kullanabilirsiniz.
+// Integration of highlight.js for Marked:
+// If you are using marked v4+ you can use the marked.use() method.
 marked.use({
     highlight: function (code, lang) {
         const language = hljs.getLanguage(lang) ? lang : "plaintext";
@@ -54,14 +54,14 @@ export default {
             fetch(`/manuals/${file}`)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`Dosya yüklenemedi: ${file}`);
+                        throw new Error(`File could not be loaded: ${file}`);
                     }
                     return response.text();
                 })
                 .then(markdown => {
-                    // Marked parse fonksiyonunu kullanarak markdown'u HTML'e dönüştürüyoruz.
+                    // Convert markdown to HTML using Marked's parse function.
                     this.activeFileContent = marked.parse(markdown);
-                    // HTML render edildikten sonra, varsa kod bloklarını highlight.js ile yeniden işleyelim.
+                    // After the HTML is rendered, reprocess any code blocks with highlight.js.
                     this.$nextTick(() => {
                         document.querySelectorAll("pre code").forEach((block) => {
                             hljs.highlightElement(block);
@@ -70,45 +70,45 @@ export default {
                 })
                 .catch(error => {
                     console.error(error);
-                    this.activeFileContent = "<p>Dosya yüklenirken hata oluştu.</p>";
+                    this.activeFileContent = "<p>An error occurred while loading the file.</p>";
                 });
         }
     }
 };
 </script>
 
-  <style scoped>
-  .manual-page {
-    display: flex;
-    padding: 20px;
-  }
+<style scoped>
+.manual-page {
+  display: flex;
+  padding: 20px;
+}
 
-  /* Sidebar stil ayarları */
-  .manual-sidebar {
-    width: 200px;
-    margin-right: 20px;
-    border-right: 1px solid #ddd;
-    padding-right: 10px;
-  }
+/* Sidebar styles */
+.manual-sidebar {
+  width: 200px;
+  margin-right: 20px;
+  border-right: 1px solid #ddd;
+  padding-right: 10px;
+}
 
-  .manual-sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
+.manual-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
 
-  .manual-sidebar li {
-    padding: 5px 0;
-    cursor: pointer;
-  }
+.manual-sidebar li {
+  padding: 5px 0;
+  cursor: pointer;
+}
 
-  .manual-sidebar li.active {
-    font-weight: bold;
-  }
+.manual-sidebar li.active {
+  font-weight: bold;
+}
 
-  /* Markdown içeriği stil ayarları */
-  .manual-content {
-    flex: 1;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  </style>
+/* Markdown content styles */
+.manual-content {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+</style>

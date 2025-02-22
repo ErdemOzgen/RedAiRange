@@ -1,4 +1,4 @@
-```markdown
+
 # Heading 1
 
 ## Heading 2
@@ -26,7 +26,7 @@ function greet(name) {
 console.log(greet("Markdown"));
 ```
 
-![Placeholder Image](https://via.placeholder.com/150)
+<img src="/public/redai.png" width="150" alt="Placeholder Image" />
 
 | Feature       | Description                              | Example         |
 | ------------- | ---------------------------------------- | --------------- |
@@ -34,8 +34,3 @@ console.log(greet("Markdown"));
 | Emphasis      | Bold and italic formatting               | **bold**, *italic* |
 | Code          | Inline `code` or code blocks using triple backticks | ```code```     |
 | Lists         | Unordered and ordered lists              | - item / 1. item |
-    
----
-
-End of Markdown demo.
-```
