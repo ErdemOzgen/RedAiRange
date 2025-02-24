@@ -40,7 +40,7 @@
                         <textarea id="name" v-model="dockerRunCommand" type="text" class="form-control docker-run" required placeholder="docker run ..."></textarea>
                     </div>
 
-                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsTarget">{{ $t("Convert to Compose") }}</button>
+                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsTarget">{{ $t("Convert to Target") }}</button>
 
 
                     <!-- Docker Run -->
@@ -49,7 +49,7 @@
                         <textarea id="name" v-model="dockerRunCommand" type="text" class="form-control docker-run" required placeholder="docker run ..."></textarea>
                     </div>
 
-                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsArsenal">{{ $t("Convert to Compose") }}</button>
+                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsArsenal">{{ $t("Convert to Arsenal") }}</button>
                 </div>
                 <!-- Right -->
                 <div class="col-md-5">
