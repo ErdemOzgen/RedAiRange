@@ -247,7 +247,7 @@ const template = `
       ports:
         - "8080:80"
   `;
-const envDefault = "# VARIABLE=value #comment # AI TARGETS";
+const envDefault = "# VARIABLE=value #comment # OPENAI_API_KEY= sk-123";
 
 let yamlErrorTimeout = null;
 let serviceStatusTimeout = null;

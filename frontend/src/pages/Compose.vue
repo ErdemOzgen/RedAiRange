@@ -259,12 +259,14 @@ import NetworkInput from "../components/NetworkInput.vue";
 import dotenv from "dotenv";
 
 const template = `
+version: "3.8"
+
 services:
-  nginx:
-    image: nginx:latest
+  ubuntu:
+    image: ubuntu:latest
     restart: unless-stopped
-    ports:
-      - "8080:80"
+    command: tail -f /dev/null
+
 `;
 const envDefault = "# VARIABLE=value #comment";
 
