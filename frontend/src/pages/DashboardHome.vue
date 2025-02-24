@@ -33,6 +33,23 @@
                     </div>
 
                     <button class="btn-normal btn mb-4" @click="convertDockerRun">{{ $t("Convert to Compose") }}</button>
+
+                    <!-- Docker Run -->
+                    <h2 class="mb-3">{{ $t("Docker Run as Target Machine") }}</h2>
+                    <div class="mb-3">
+                        <textarea id="name" v-model="dockerRunCommand" type="text" class="form-control docker-run" required placeholder="docker run ..."></textarea>
+                    </div>
+
+                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsTarget">{{ $t("Convert to Compose") }}</button>
+
+
+                    <!-- Docker Run -->
+                    <h2 class="mb-3">{{ $t("Docker Run as Arsenal Tool") }}</h2>
+                    <div class="mb-3">
+                        <textarea id="name" v-model="dockerRunCommand" type="text" class="form-control docker-run" required placeholder="docker run ..."></textarea>
+                    </div>
+
+                    <button class="btn-normal btn mb-4" @click="convertDockerRunAsArsenal">{{ $t("Convert to Compose") }}</button>
                 </div>
                 <!-- Right -->
                 <div class="col-md-5">
@@ -226,6 +243,49 @@ export default {
                     this.$root.toastRes(res);
                 }
             });
+
+
+        
+        },
+
+        convertDockerRunAsTarget() {
+            if (this.dockerRunCommand.trim() === "docker run") {
+                throw new Error("Please enter a docker run command");
+            }
+
+            // composerize is working in dev, but after "vite build", it is not working
+            // So pass to backend to do the conversion
+            this.$root.getSocket().emit("composerize", this.dockerRunCommand, (res) => {
+                if (res.ok) {
+                    this.$root.composeTemplate = res.composeTemplate;
+                    this.$router.push("/composetarget");
+                } else {
+                    this.$root.toastRes(res);
+                }
+            });
+
+
+        
+        },
+
+        convertDockerRunAsArsenal() {
+            if (this.dockerRunCommand.trim() === "docker run") {
+                throw new Error("Please enter a docker run command");
+            }
+
+            // composerize is working in dev, but after "vite build", it is not working
+            // So pass to backend to do the conversion
+            this.$root.getSocket().emit("composerize", this.dockerRunCommand, (res) => {
+                if (res.ok) {
+                    this.$root.composeTemplate = res.composeTemplate;
+                    this.$router.push("/composearsenal");
+                } else {
+                    this.$root.toastRes(res);
+                }
+            });
+
+
+        
         },
 
         /**

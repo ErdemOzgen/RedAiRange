@@ -5,6 +5,8 @@ services:
     ports:
       # Host Port : Container Port
       - 5001:5001
+      #- 5002:5002
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/app/data
@@ -20,3 +22,4 @@ services:
     environment:
       # Tell redairange where is your stacks directory
       - REDAIRANGE_STACKS_DIR=/opt/stacks
+      #- REDAIRANGE_PORT=5002
