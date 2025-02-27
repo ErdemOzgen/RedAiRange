@@ -102,7 +102,8 @@ export class RedAiRangeServer {
         // Default stacks directory
         let defaultStacksDir;
         if (process.platform === "win32") {
-            defaultStacksDir = "./stacks";
+            //defaultStacksDir = "./stacks";
+            defaultStacksDir = "./opt/stacks";
         } else {
             defaultStacksDir = "./opt/stacks";
         }
