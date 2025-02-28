@@ -1,7 +1,7 @@
 <template>
     <div class="manual-page">
         <div class="image-container">
-            <img src="/public/redai.png" alt="Redai" style="width: 750px; height: auto;" />
+            <img src="/redai.png" alt="Redai" style="width: 750px; height: auto;" />
         </div>
         <h1>Welcome to Red Ai Range</h1>
         <p>This is the manual page content.</p>

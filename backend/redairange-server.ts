@@ -192,6 +192,41 @@ export class RedAiRangeServer {
             enableBrotli: true,
         }));
 
+        // Add this before the universal route handler
+        // Serve manual markdown files
+        this.app.get("/manuals/index.json", (_req, res) => {
+            try {
+                const manualDir = path.join(this.config.dataDir, "manuals");
+                if (!fs.existsSync(manualDir)) {
+                    fs.mkdirSync(manualDir, { recursive: true });
+                }
+                
+                const files = fs.readdirSync(manualDir)
+                    .filter(file => file.endsWith('.md'))
+                    .sort();
+                
+                res.json({ files });
+            } catch (error) {
+                res.status(500).json({ error: "Could not read manual files" });
+            }
+        });
+
+        this.app.get("/manuals/:filename", (req, res) => {
+            try {
+                const filename = req.params.filename;
+                const filePath = path.join(this.config.dataDir, "manuals", filename);
+                
+                if (!fs.existsSync(filePath)) {
+                    return res.status(404).send("File not found");
+                }
+                
+                const content = fs.readFileSync(filePath, 'utf-8');
+                res.type('text/markdown').send(content);
+            } catch (error) {
+                res.status(500).send("Error reading file");
+            }
+        });
+
         // Universal Route Handler, must be at the end of all express routes.
         this.app.get("*", async (_request, response) => {
             response.send(this.indexHTML);
@@ -552,6 +587,17 @@ export class RedAiRangeServer {
         // Create data/stacks directory
         if (!fs.existsSync(this.stacksDir)) {
             fs.mkdirSync(this.stacksDir, { recursive: true });
+        }
+
+        // Add this after creating data directory
+        // Create manuals directory
+        const manualsDir = path.join(this.config.dataDir, "manuals");
+        if (!fs.existsSync(manualsDir)) {
+            fs.mkdirSync(manualsDir, { recursive: true });
+            
+            // Create a default intro file
+            const defaultContent = `# Welcome to RedAiRange Manual\n\nThis is your first manual page.`;
+            fs.writeFileSync(path.join(manualsDir, "intro.md"), defaultContent);
         }
 
         log.info("server", `Data Dir: ${this.config.dataDir}`);

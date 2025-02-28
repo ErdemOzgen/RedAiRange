@@ -1,6 +1,6 @@
 <template>
     <div class="recorder">
-        <video ref="video" :src="blobUrl" controls autoplay poster="/public/redai.png"></video>
+        <video ref="video" :src="blobUrl" controls autoplay poster="/redai.png"></video>
         <p>Status: {{ status }}</p>
         <div class="buttons">
             <button
