@@ -1,4 +1,5 @@
 # Initial  Adversarial Playground Setup
+# Use "adversarial_playground_ai_target" machine for this practice
 
 This chapter takes you on a step-by-step journey to build a complete machine learning (ML) pipeline—from setting up your development environment to deploying an inference service. By the end of the chapter, you will have developed a simple AI service, learned essential ML techniques, and explored scaling ML development on the cloud.
 
