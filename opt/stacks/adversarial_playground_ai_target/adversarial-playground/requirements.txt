@@ -1,0 +1,8 @@
+numpy 
+matplotlib
+pandas
+Pillow==9.2.0 
+tensorflow==2.15.*
+ipykernel
+flask
+scikit-learn
