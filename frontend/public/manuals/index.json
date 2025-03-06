@@ -2,6 +2,13 @@
     "files": [
       "intro.md",
       "usage.md",
-      "advanced.md"
+      "advanced.md",
+      "AdversarialPlayground.md",
+      "SecurityAdversarialAI.md",
+      "PoisoningAttacks.md",
+      "ModelTampering.md",
+      "SupplyChain.md",
+      "EvasionAttacks.md",
+      "PrivacyAttacks.md"
     ]
   }
