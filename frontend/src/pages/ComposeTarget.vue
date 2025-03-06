@@ -240,12 +240,18 @@ import NetworkInput from "../components/NetworkInput.vue";
 import dotenv from "dotenv";
 
 const template = `
-  services:
-    nginx:
-      image: nginx:latest
-      restart: unless-stopped
-      ports:
-        - "8080:80"
+version: '3.8'
+services:
+  target:
+    stdin_open: true
+    tty: true
+    #user: root # Run container as root
+    ports:
+      - 10004:8888
+    volumes:
+      - .:/home/jovyan/work
+    image: quay.io/jupyter/pytorch-notebook:latest
+networks: {}
   `;
 const envDefault = "# VARIABLE=value #comment # OPENAI_API_KEY= sk-123";
 
