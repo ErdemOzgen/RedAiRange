@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  transformer-notebook:
+    stdin_open: true
+    tty: true
+    #user: root # Run container as root
+    ports:
+      - 10002:8888
+    volumes:
+      - .:/home/jovyan/work
+    image: toluclassics/transformers_notebook:latest
+networks: {}

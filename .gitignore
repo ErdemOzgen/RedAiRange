@@ -1,9 +1,9 @@
 # Should update .dockerignore as well
-.env
+#.env
 node_modules
 .idea
 data
-stacks
+# stacks
 tmp
 /private
 

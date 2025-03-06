@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  blackcart:
+    image: erdemozgen/blackcart:latest
+    build: .
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    environment:
+      - TELEGRAM_API_KEY=your_telegram_api_key
+      - TELEGRAM_CHAT_ID=your_telegram_chat_id
+      - TERM=xterm
+      - GOTTY_USERNAME=blackcart
+      - GOTTY_PASSWORD=blackcart
+    volumes:
+      - ./scan_data:/work_dir/scan_data  # Mount ./scan_data from the host to /work_dir/scan_data in the container
+      - ./data/.blackdagger/dags:/root/.blackdagger/dags
+      - ./data/.blackdagger/logs:/root/.blackdagger/logs
+      - ./data/.blackdagger/suspend:/root/.blackdagger/suspend
+      - ./data/.blackdagger/data:/root/.blackdagger/data
+      - ./work_dir:/work_dir
+
+    # Use the following command if you want to enable the web terminal with HTTP and basic auth
+    #command: ["sh", "-c", "gotty -w --credential blackcart:blackcart /bin/bash"]
+    command: ["sh", "-c", "/startservices.sh"]
+    
+    # Use the following command if you want to enable TLS with basic auth
+    #command: ["sh", "-c", "gotty --tls --tls-crt /etc/gotty/cert.pem --tls-key /etc/gotty/key.pem -w --credential $GOTTY_USERNAME:$GOTTY_PASSWORD /bin/bash"]
+      
+    # Uncomment the following line if you want the service to restart automatically
+    # restart: unless-stopped
