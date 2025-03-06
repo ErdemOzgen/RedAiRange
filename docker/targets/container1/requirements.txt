@@ -1,0 +1,14 @@
+scikit-learn==1.1.2
+tensorflow==2.15.*
+Flask
+requests
+Pillow
+numpy
+python-dotenv
+cryptography
+flask_oauthlib==0.9.5
+matplotlib
+pandas
+art
+ipykernel
+keras
