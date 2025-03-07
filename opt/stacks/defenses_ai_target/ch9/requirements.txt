@@ -1,0 +1,6 @@
+numpy
+matplotlib
+tensorflow==2.15.*
+keras
+art
+scikit-learn==1.1.2

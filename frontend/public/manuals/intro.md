@@ -7,7 +7,7 @@
 * SupplyChain.md ch6
 * EvasionAttacks.md ch7
 * PrivacyAttacks.md ch8
-* Defenses.md
+* Defenses.md ch9
 * PrivacyPreserving.md
 * GenAI.md
 * LLMFoundations.md
