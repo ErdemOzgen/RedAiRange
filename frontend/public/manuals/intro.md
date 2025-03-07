@@ -1,5 +1,10 @@
 # Welcome to Red Ai Range (RAR)
 
+<img src="./redai.png" alt="Red AI" width="300" />
+
+
+
+
 * AdversarialPlayground.md ch2
 * SecurityAdversarialAI.md ch3
 * PoisoningAttacks.md ch4
