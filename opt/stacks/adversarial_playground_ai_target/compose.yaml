@@ -4,8 +4,8 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - 10010:8888
-      - 5000:5000
+      - 11000:8888
+      - 11001:5000
     volumes:
       - .:/home/jovyan/work
     image: erdemozgen/rar-target-one

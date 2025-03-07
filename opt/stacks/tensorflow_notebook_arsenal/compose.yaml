@@ -5,7 +5,7 @@ services:
     tty: true
     #user: root # Run container as root
     ports:
-      - 10001:8888
+      - 10102:8888
     volumes:
       - .:/home/jovyan/work
     image: quay.io/jupyter/tensorflow-notebook:latest

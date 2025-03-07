@@ -275,7 +275,7 @@ const template = `
       image: nginx:latest
       restart: unless-stopped
       ports:
-        - "8080:80"
+        - "10010:80"
   `;
 const envDefault = "# VARIABLE=value #comment";
 

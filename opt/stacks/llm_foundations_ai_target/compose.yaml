@@ -5,7 +5,7 @@ services:
     tty: true
     #user: root # Run container as root
     ports:
-      - 10004:8888
+      - 11009:8888
     volumes:
       - .:/home/jovyan/work
     image: erdemozgen/rar-target-four

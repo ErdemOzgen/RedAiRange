@@ -247,7 +247,7 @@ services:
     tty: true
     #user: root # Run container as root
     ports:
-      - 10005:8888
+      - 10104:8888 # for new target just add one to port number
     volumes:
       - .:/home/jovyan/work
     image: quay.io/jupyter/pytorch-notebook:latest

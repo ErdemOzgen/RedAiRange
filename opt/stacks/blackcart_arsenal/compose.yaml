@@ -4,8 +4,8 @@ services:
     image: erdemozgen/blackcart:latest
     build: .
     ports:
-      - 8089:8080
-      - 8099:8090
+      - 18080:8080
+      - 18090:8090
     environment:
       - TELEGRAM_API_KEY=your_telegram_api_key
       - TELEGRAM_CHAT_ID=your_telegram_chat_id
