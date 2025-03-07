@@ -1,0 +1,7 @@
+#logon to your github account and from Developer Settings 
+# register the ImRecS app as a new OAuth app
+# use following urls http://localhost:8000 and http://localhost:8000/login/authorized
+# then rename to .env
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+SECRET_KEY=your_flask_secret_key

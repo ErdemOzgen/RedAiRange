@@ -1,5 +1,5 @@
 # Security and Adversarial AI
-
+# Use 'security_adversarial_ai_target' machine for this practice 
 This section introduces the importance of securing an AI service and explains why traditional cybersecurity measures may not be enough against adversarial AI attacks. It covers the foundational concepts in security, methods to harden your AI playground, and how adversarial AI challenges conventional defenses.
 
 ---

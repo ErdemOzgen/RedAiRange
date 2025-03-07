@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  poisoning_attacks_ai_target:
+    stdin_open: true
+    tty: true
+    ports:
+      - 10015:8888
+    volumes:
+      - .:/home/jovyan/work
+    image: erdemozgen/rar-target-one
+networks: {}

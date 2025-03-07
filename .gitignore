@@ -43,3 +43,5 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 
+
+/opt/stacks/test_ai_target

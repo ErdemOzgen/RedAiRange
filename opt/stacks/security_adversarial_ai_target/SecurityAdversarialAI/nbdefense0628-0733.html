@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- tailwind cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "black-background": "#151515",
+
+            "critical-base": "#D01100",
+            "critical-background": "#FFFBFA",
+            "critical-border": "#FDA29B",
+
+            "high-base": "#ED6A5E",
+            "high-background": "#FFFBFA",
+            "high-border": "#FDA29B",
+
+            "medium-base": "#F4BD4F",
+            "medium-background": "#FFFDF8",
+            "medium-border": "#EFE1BC",
+
+            "low-base": "#07B6CE",
+            "low-background": "#E8FCFF",
+            "low-border": "#009AAE",
+
+            "none-background": "#F5F5F5",
+            "none-border": "#E0E0E0",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .modal-button {
+      background: linear-gradient(#050f20, #050f20) padding-box,
+        linear-gradient(rgba(208, 213, 221, 1), rgba(208, 213, 221, 0.4)) border-box;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    dialog::backdrop {
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+      background: rgba(3, 10, 27, 0.7);
+    }
+  </style>
+
+  <title>NB Defense Report</title>
+</head>
+
+<body>
+  <div class="bg-black-background absolute h-72 w-full text-white z-0">
+    <nav class="w-100 border-b-[1px] border-[#2D2D2D]">
+  <div class="flex flex-row max-w-4xl m-auto h-14 items-center">
+    <p class="inline-block ml-2">NB Defense Scan Results</p>
+    <div class="ml-auto flex items-center">
+      <a
+        href="https://nbdefense.ai"
+        target="_blank"
+        rel="noreferrer"
+        >Docs</a
+      >
+    </div>
+  </div>
+</nav>
+  </div>
+  <div class="max-w-4xl m-auto relative z-10 top-14 flex flex-col">
+    <div class="text-white mt-14 mb-6 h-14 flex flex-row">
+      <div class="flex flex-col">
+        <div class="text-sm font-thin">
+          /home/yanni/Documents/src/adversarial-ai-book/ch3/
+        </div>
+        <div class="text-3xl font-bold">
+          notebooks/
+        </div>
+      </div>
+      <div class="ml-auto">
+        <button id="filesScannedButton" class="border border-[transparent] rounded-lg modal-button mr-2">View
+          files scanned</button>
+      </div>
+    </div>
+
+    <div
+  class="grid grid-cols-8 h-35 bg-white border-solid border-1 border-[#D8D8D8] rounded-md shadow-[0_1px_3px_rgba(16,24,40,0.1),0_1px_2px_rgba(16,24,40,0.06)]">
+  <div class="col-span-2 p-8">
+    <h3 class="text-sm font-thin">Files</h3>
+    <span class="text-3xl font-bold">6</span>
+  </div>
+  <div class="col-span-2 p-8">
+    <h3 class="text-sm font-thin">Checks ran</h3>
+    <span class="text-3xl font-bold">12</span>
+  </div>
+  <div class="col-span-4 p-8">
+    <h3 class="text-sm font-thin">Scanned at</h3>
+    <span class="text-3xl font-bold">Jun 28, 2024 &middot; 7:33 AM</span>
+  </div>
+</div>
+
+    
+<div
+  class="bg-critical-background border-solid border border-critical-border rounded-xl p-4 my-2 flex flex-row w-full mt-6 mb-0">
+  <div class="mr-3"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg></div>
+  <div>
+    <h2><b>Errors</b>:</h2>
+    <ul class="list-disc pl-8">
+      
+      <li>
+        Error occurred in the
+        <b>scan</b>
+        portion of the
+        <b>PII Plugin</b>
+        plugin. Message: [E050] Can&#39;t find model &#39;en_core_web_trf&#39;. It doesn&#39;t seem to be a Python package or a valid path to a data directory.
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+    <div>
+  <h3 class="text-lg font-bold mt-6">All issues</h3>
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-critical-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Critical</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-high-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">High</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-medium-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Medium</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-low-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Low</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+</div>
+
+    <dialog id="filesScannedDialog"
+  class="p-0 border border-solid border-[#D8D8D8] rounded-md shadow-[0_1px_3px_rgba(16,24,40,0.1),0_1px_2px_rgba(16,24,40,0.06)]">
+  <div class="p-4">
+    <div class="flex flex-row justify-between">
+      <h1 class="font-bold text-lg">Files scanned</h1>
+      <a id="filesScannedCloseButton" class="cursor-pointer flex items-center">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M17.5 7.5L7.5 17.5M7.5 7.5L17.5 17.5" stroke="black" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>
+      </a>
+    </div>
+    <ul class="md:mr-14">
+      
+      <li class="font-semibold text-xs mt-4">Notebooks</li>
+      <ul class="text-sm font-mono">
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/deploy-simple-cnn-cifar10.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/verify-environment.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/DeployResNet50v2-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/simple-cnn-cifar10-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/simple-cnn-cifar10-wsl2-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/deploy-simple-cnn-cifar10-checkpoint.ipynb </li>
+        
+      </ul>
+      
+      <li class="font-semibold text-xs mt-4">Requirements</li>
+      <ul class="text-sm font-mono">
+        
+      </ul>
+      
+    </ul>
+  </div>
+</dialog>
+
+    <footer class="my-4">
+  <div>
+    <span class="text-muted">Powered by: <a href="https://protectai.com/" target="_blank" rel="noreferrer"
+        class="underline text-blue-600 hover:text-blue-800">Protect AI</a></span>
+  </div>
+</footer>
+
+    <script>
+  const filesScannedButton = document.getElementById('filesScannedButton');
+  const filesScannedDialog = document.getElementById('filesScannedDialog');
+  const filesScannedCloseButton = document.getElementById('filesScannedCloseButton');
+
+  filesScannedButton.addEventListener('click', () => {
+    if (typeof filesScannedDialog.showModal === 'function') {
+      filesScannedDialog.showModal();
+    }
+  });
+
+  // Allows click outside of dialog to close dialog
+  filesScannedDialog.addEventListener('click', () => {
+    filesScannedDialog.close();
+  });
+
+  // Add close button
+  filesScannedCloseButton.addEventListener('click', () => {
+    filesScannedDialog.close();
+  })
+
+  filesScannedDialog.firstElementChild.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+</script>
+</body>

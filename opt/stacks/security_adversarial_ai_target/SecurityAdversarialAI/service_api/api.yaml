@@ -1,0 +1,5 @@
+# api.yaml
+DEPLOYED_MODELS_FOLDER: ./deployed_models
+MODEL_NAME=ResNet50v2-imagenet.h5
+IMAGE_SIZE=128
+LABELS =  

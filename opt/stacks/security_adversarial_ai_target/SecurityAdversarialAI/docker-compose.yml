@@ -1,0 +1,36 @@
+version: '3'
+services:
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - service_app
+  service_app:
+    image: service_app
+    environment:
+      - FLASK_API_URL=http://service_api:5000
+      - API-KEY=testkey
+    build: ./service_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ssl:/ssl
+    depends_on:
+      - service_api
+  service_api:
+    image: service_api
+    build: ./service_api
+    environment:
+      - MODEL_PATH=deployed_models/simple-cifar10.h5.enc
+      - MODEL_HASH=4145e6882f814492e1c7b55950a13cd64853691d8490bc4beb75f2d7094de6e4
+      - API-KEY=testkey
+    ports:
+      - "5000:5000"
+    volumes:
+      - .keys:/keys
+      - ./api/deployed_models:/deployed_models

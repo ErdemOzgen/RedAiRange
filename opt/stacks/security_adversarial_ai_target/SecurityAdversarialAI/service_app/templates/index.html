@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Recognition Service</title>
+    <style>
+        html, body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center; 
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            font: normal 14px/20px Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 10px 20px;
+            border: solid 1px #e6e6e6;
+            margin: auto;
+        }
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            cursor: pointer; 
+        }
+    </style>
+ <script>
+    window.onload = function() {
+        const input = document.querySelector('input[type="file"]');
+        const form = document.querySelector('form');
+        const message = document.querySelector('#message');
+        const uploadedImage = document.querySelector('#uploaded_image');
+
+        // Adjust the width if the image is larger than 640px
+        if (uploadedImage && uploadedImage.naturalWidth > 640) {
+            uploadedImage.style.width = '640px';
+        }
+
+        input.onchange = function() {
+            form.submit();
+            message.style.display = 'block';
+        }
+    }
+</script>
+</head>
+<body>
+    <h1>Image Recognition Service</h1>
+    <p>The service can recognise images of the following types <br/><i>airplanes, birds, cars,  cats, dogs, deer, horses, frogs,  ships, trucks</i>. <br/>Please select and upload and image to classify it </p>  
+    <form action="/" method="post" enctype="multipart/form-data">
+        <div class="file-upload">
+            Select Image
+            <input type="file" name="image">
+        </div>
+    </form>
+    {% if prediction %}
+        <h3>Image classified as  {{ prediction }}</h3>
+    {% endif %}
+    {% if image_url %}
+        <img id="uploaded_image" src="{{ image_url }}" alt="Uploaded image" style="width: auto; height: auto;">
+    {% endif %}
+</body>
+</html>

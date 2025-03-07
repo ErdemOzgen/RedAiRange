@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- tailwind cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "black-background": "#151515",
+
+            "critical-base": "#D01100",
+            "critical-background": "#FFFBFA",
+            "critical-border": "#FDA29B",
+
+            "high-base": "#ED6A5E",
+            "high-background": "#FFFBFA",
+            "high-border": "#FDA29B",
+
+            "medium-base": "#F4BD4F",
+            "medium-background": "#FFFDF8",
+            "medium-border": "#EFE1BC",
+
+            "low-base": "#07B6CE",
+            "low-background": "#E8FCFF",
+            "low-border": "#009AAE",
+
+            "none-background": "#F5F5F5",
+            "none-border": "#E0E0E0",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .modal-button {
+      background: linear-gradient(#050f20, #050f20) padding-box,
+        linear-gradient(rgba(208, 213, 221, 1), rgba(208, 213, 221, 0.4)) border-box;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    dialog::backdrop {
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+      background: rgba(3, 10, 27, 0.7);
+    }
+  </style>
+
+  <title>NB Defense Report</title>
+</head>
+
+<body>
+  <div class="bg-black-background absolute h-72 w-full text-white z-0">
+    <nav class="w-100 border-b-[1px] border-[#2D2D2D]">
+  <div class="flex flex-row max-w-4xl m-auto h-14 items-center">
+    <p class="inline-block ml-2">NB Defense Scan Results</p>
+    <div class="ml-auto flex items-center">
+      <a
+        href="https://nbdefense.ai"
+        target="_blank"
+        rel="noreferrer"
+        >Docs</a
+      >
+    </div>
+  </div>
+</nav>
+  </div>
+  <div class="max-w-4xl m-auto relative z-10 top-14 flex flex-col">
+    <div class="text-white mt-14 mb-6 h-14 flex flex-row">
+      <div class="flex flex-col">
+        <div class="text-sm font-thin">
+          /home/yanni/Documents/src/adversarial-ai-book/ch3/
+        </div>
+        <div class="text-3xl font-bold">
+          notebooks/
+        </div>
+      </div>
+      <div class="ml-auto">
+        <button id="filesScannedButton" class="border border-[transparent] rounded-lg modal-button mr-2">View
+          files scanned</button>
+      </div>
+    </div>
+
+    <div
+  class="grid grid-cols-8 h-35 bg-white border-solid border-1 border-[#D8D8D8] rounded-md shadow-[0_1px_3px_rgba(16,24,40,0.1),0_1px_2px_rgba(16,24,40,0.06)]">
+  <div class="col-span-2 p-8">
+    <h3 class="text-sm font-thin">Files</h3>
+    <span class="text-3xl font-bold">6</span>
+  </div>
+  <div class="col-span-2 p-8">
+    <h3 class="text-sm font-thin">Checks ran</h3>
+    <span class="text-3xl font-bold">12</span>
+  </div>
+  <div class="col-span-4 p-8">
+    <h3 class="text-sm font-thin">Scanned at</h3>
+    <span class="text-3xl font-bold">Jun 28, 2024 &middot; 7:37 AM</span>
+  </div>
+</div>
+
+    
+
+    <div>
+  <h3 class="text-lg font-bold mt-6">All issues</h3>
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-critical-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Critical</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-high-base text-white text-center h-6 w-6"
+        >5</span
+      >
+      <h2 class="text-2xl font-bold ml-2">High</h2>
+    </div>
+     
+      
+        
+        <div
+  class="bg-high-background border-solid border border-high-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <div class="mr-3">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+  </div>
+  <div class="w-full">
+  <h3 class="font-bold">PII Found</h3>
+  <p class="mt-4">Path: notebooks/.ipynb_checkpoints/simple-cnn-cifar10-checkpoint.ipynb</p>
+  <p class="mt-4"><b>Description</b>:</p>
+  <p>A total of 1 PII found in cell number 3 with the following tag(s):</p>
+  <p>
+  <pre>{
+    "PERSON": 1
+}</pre>
+  </p>
+  <p class="mt-4">
+    <b>Location</b>: cell input
+  </p>
+  <div class="flex flex-row w-100 mt-4">
+    <div class="pr-4">
+      <p class="font-bold">Cell #3</p>
+    </div>
+    <div class="bg-white border-solid border border-none-border rounded-md overflow-x-auto w-[42rem]">
+      <span class="pl-4">#load dependencies and initialisations
+from tensorflow import keras
+from tensorflow.keras.datasets import cifar10
+import matplotlib.pyplot as plt
+import warnings
+import numpy as np
+import tensorflow as tf 
+from sklearn.model_selection import train_test_split
+warnings.filterwarnings('ignore')
+gpus = tf.config.list_physical_devices('GPU')
+# prevent memory error messages in GPU environments by setting memory growth equal to all GPUs 
+if gpus:
+  try:
+    # Currently, memory growth needs to be the same across GPUs
+    for [PII] in [PII]s:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+  except RuntimeError as e:
+    # Memory growth must be set before GPUs have been initialized
+    print(e)
+model_filename = 'simple-cifar10.h5'</span>
+    </div>
+  </div>
+</div>
+</div>
+      
+        
+        <div
+  class="bg-high-background border-solid border border-high-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <div class="mr-3">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+  </div>
+  <div class="w-full">
+  <h3 class="font-bold">PII Found</h3>
+  <p class="mt-4">Path: notebooks/.ipynb_checkpoints/simple-cnn-cifar10-checkpoint.ipynb</p>
+  <p class="mt-4"><b>Description</b>:</p>
+  <p>A total of 1 PII found in cell number 22 with the following tag(s):</p>
+  <p>
+  <pre>{
+    "PERSON": 1
+}</pre>
+  </p>
+  <p class="mt-4">
+    <b>Location</b>: cell input
+  </p>
+  <div class="flex flex-row w-100 mt-4">
+    <div class="pr-4">
+      <p class="font-bold">Cell #22</p>
+    </div>
+    <div class="bg-white border-solid border border-none-border rounded-md overflow-x-auto w-[42rem]">
+      <span class="pl-4">### set the optimisation and loss function suitable to the job, metrics to use during training, and compile the model
+model.compile(optimizer='[PII]', loss=keras.losses.categorical_crossentropy, metrics=['accuracy'])</span>
+    </div>
+  </div>
+</div>
+</div>
+      
+        
+        <div
+  class="bg-high-background border-solid border border-high-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <div class="mr-3">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+  </div>
+  <div class="w-full">
+  <h3 class="font-bold">PII Found</h3>
+  <p class="mt-4">Path: notebooks/.ipynb_checkpoints/simple-cnn-cifar10-checkpoint.ipynb</p>
+  <p class="mt-4"><b>Description</b>:</p>
+  <p>A total of 2 PII found in cell number 26 with the following tag(s):</p>
+  <p>
+  <pre>{
+    "PERSON": 2
+}</pre>
+  </p>
+  <p class="mt-4">
+    <b>Location</b>: cell output
+  </p>
+  <div class="flex flex-row w-100 mt-4">
+    <div class="pr-4">
+      <p class="font-bold">Cell #26</p>
+    </div>
+    <div class="bg-white border-solid border border-none-border rounded-md overflow-x-auto w-[42rem]">
+      <span class="pl-4">625/625 [==============================] - 5s 8ms/step - loss: 0.2970 - accuracy: 0.8961 - val_loss: 0.4040 - val_accuracy: 0.8730
+Epoch 59/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2959 - accuracy: 0.8957 - val_loss: 0.4241 - val_accuracy: 0.8705
+Epoch 60/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2961 - accuracy: 0.8963 - val_loss: 0.4091 - val_accuracy: 0.8723
+Epoch 61/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2919 - accuracy: 0.8974 - val_loss: 0.5588 - val_accuracy: 0.8304
+Epoch 62/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2928 - accuracy: 0.8974 - val_loss: 0.4725 - val_accuracy: 0.8555
+Epoch 63/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2901 - accuracy: 0.8969 - val_loss: 0.4424 - val_accuracy: 0.8613
+Epoch 64/100
+625/625 [==============================] - 5s 7ms/step - loss: 0.2889 - accuracy: 0.8984 - val_loss: 0.4420 - val_accuracy: 0.8628
+[PII]
+625/625 [==============================] - 5s 7ms/step - loss: 0.2854 - accuracy: 0.8989 - val_loss: 0.4545 - val_accuracy: 0.8607
+Epoch 66/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2807 - accuracy: 0.9028 - val_loss: 0.4170 - val_accuracy: 0.8690
+Epoch 67/100
+625/625 [==============================] - 5s 7ms/step - loss: 0.2767 - accuracy: 0.9029 - val_loss: 0.4377 - val_accuracy: 0.8673
+[PII]
+625/625 [==============================] - 5s 8ms/step - loss: 0.2791 - accuracy: 0.9035 - val_loss: 0.3982 - val_accuracy: 0.8774
+Epoch 69/100
+625/625 [==============================] - 4s 6ms/step - loss: 0.2754 - accuracy: 0.9043 - val_loss: 0.4301 - val_accuracy: 0.8679
+Epoch 70/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2818 - accuracy: 0.9014 - val_loss: 0.4299 - val_accuracy: 0.8649
+Epoch 71/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2783 - accuracy: 0.9033 - val_loss: 0.4184 - val_accuracy: 0.8730
+Epoch 72/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2741 - accuracy: 0.9046 - val_loss: 0.4515 - val_accuracy: 0.8600
+Epoch 73/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2730 - accuracy: 0.9058 - val_loss: 0.4553 - val_accuracy: 0.8601
+Epoch 74/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2746 - accuracy: 0.9046 - val_loss: 0.4316 - val_accuracy: 0.8667
+Epoch 75/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2684 - accuracy: 0.9061 - val_loss: 0.4165 - val_accuracy: 0.8696
+Epoch 76/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2656 - accuracy: 0.9057 - val_loss: 0.4259 - val_accuracy: 0.8651
+Epoch 77/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2616 - accuracy: 0.9100 - val_loss: 0.4208 - val_accuracy: 0.8713
+Epoch 78/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2677 - accuracy: 0.9071 - val_loss: 0.3952 - val_accuracy: 0.8775
+Epoch 79/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2590 - accuracy: 0.9113 - val_loss: 0.4317 - val_accuracy: 0.8669
+Epoch 80/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2608 - accuracy: 0.9090 - val_loss: 0.4219 - val_accuracy: 0.8700
+Epoch 81/100
+625/625 [==============================] - 5s 7ms/step - loss: 0.2642 - accuracy: 0.9086 - val_loss: 0.5142 - val_accuracy: 0.8457
+Epoch 82/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2548 - accuracy: 0.9122 - val_loss: 0.4744 - val_accuracy: 0.8600
+Epoch 83/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2549 - accuracy: 0.9117 - val_loss: 0.4337 - val_accuracy: 0.8680
+Epoch 84/100
+625/625 [==============================] - 2s 4ms/step - loss: 0.2555 - accuracy: 0.9125 - val_loss: 0.4545 - val_accuracy: 0.8616
+Epoch 85/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2546 - accuracy: 0.9098 - val_loss: 0.4220 - val_accuracy: 0.8717
+Epoch 86/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2523 - accuracy: 0.9121 - val_loss: 0.4462 - val_accuracy: 0.8676
+Epoch 87/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2525 - accuracy: 0.9105 - val_loss: 0.3951 - val_accuracy: 0.8812
+Epoch 88/100
+625/625 [==============================] - 5s 7ms/step - loss: 0.2463 - accuracy: 0.9135 - val_loss: 0.4216 - val_accuracy: 0.8736
+Epoch 89/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2537 - accuracy: 0.9117 - val_loss: 0.4092 - val_accuracy: 0.8764
+Epoch 90/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2437 - accuracy: 0.9143 - val_loss: 0.4009 - val_accuracy: 0.8792
+Epoch 91/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2499 - accuracy: 0.9122 - val_loss: 0.4654 - val_accuracy: 0.8596
+Epoch 92/100
+625/625 [==============================] - 5s 8ms/step - loss: 0.2421 - accuracy: 0.9152 - val_loss: 0.4214 - val_accuracy: 0.8746
+Epoch 93/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2402 - accuracy: 0.9164 - val_loss: 0.4299 - val_accuracy: 0.8709
+Epoch 94/100
+625/625 [==============================] - 4s 6ms/step - loss: 0.2408 - accuracy: 0.9160 - val_loss: 0.4424 - val_accuracy: 0.8696
+Epoch 95/100
+625/625 [==============================] - 4s 6ms/step - loss: 0.2427 - accuracy: 0.9135 - val_loss: 0.4669 - val_accuracy: 0.8649
+Epoch 96/100
+625/625 [==============================] - 4s 6ms/step - loss: 0.2404 - accuracy: 0.9166 - val_loss: 0.4375 - val_accuracy: 0.8693
+Epoch 97/100
+625/625 [==============================] - 4s 6ms/step - loss: 0.2412 - accuracy: 0.9166 - val_loss: 0.4061 - val_accuracy: 0.8770
+Epoch 98/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2358 - accuracy: 0.9173 - val_loss: 0.3998 - val_accuracy: 0.8793
+Epoch 99/100
+625/625 [==============================] - 3s 5ms/step - loss: 0.2372 - accuracy: 0.9175 - val_loss: 0.4052 - val_accuracy: 0.8809
+Epoch 100/100
+625/625 [==============================] - 4s 7ms/step - loss: 0.2326 - accuracy: 0.9194 - val_loss: 0.4069 - val_accuracy: 0.8790
+</span>
+    </div>
+  </div>
+</div>
+</div>
+      
+        
+        <div
+  class="bg-high-background border-solid border border-high-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <div class="mr-3">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+  </div>
+  <div class="w-full">
+  <h3 class="font-bold">PII Found</h3>
+  <p class="mt-4">Path: notebooks/.ipynb_checkpoints/simple-cnn-cifar10-wsl2-checkpoint.ipynb</p>
+  <p class="mt-4"><b>Description</b>:</p>
+  <p>A total of 1 PII found in cell number 3 with the following tag(s):</p>
+  <p>
+  <pre>{
+    "PERSON": 1
+}</pre>
+  </p>
+  <p class="mt-4">
+    <b>Location</b>: cell input
+  </p>
+  <div class="flex flex-row w-100 mt-4">
+    <div class="pr-4">
+      <p class="font-bold">Cell #3</p>
+    </div>
+    <div class="bg-white border-solid border border-none-border rounded-md overflow-x-auto w-[42rem]">
+      <span class="pl-4">#load dependencies and initialisations
+from tensorflow import keras
+from tensorflow.keras.datasets import cifar10
+import matplotlib.pyplot as plt
+import warnings
+import numpy as np
+import tensorflow as tf 
+from sklearn.model_selection import train_test_split
+warnings.filterwarnings('ignore')
+gpus = tf.config.list_physical_devices('GPU')
+# prevent memory error messages in GPU environments by setting memory growth equal to all GPUs 
+if gpus:
+  try:
+    # Currently, memory growth needs to be the same across GPUs
+    for [PII] in [PII]s:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+  except RuntimeError as e:
+    # Memory growth must be set before GPUs have been initialized
+    print(e)
+model_filename = 'simple-cifar10.h5'</span>
+    </div>
+  </div>
+</div>
+</div>
+      
+        
+        <div
+  class="bg-high-background border-solid border border-high-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <div class="mr-3">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_7746)">
+    <path
+      d="M9.99999 6.66669V10M9.99999 13.3334H10.0083M18.3333 10C18.3333 14.6024 14.6024 18.3334 9.99999 18.3334C5.39762 18.3334 1.66666 14.6024 1.66666 10C1.66666 5.39765 5.39762 1.66669 9.99999 1.66669C14.6024 1.66669 18.3333 5.39765 18.3333 10Z"
+      stroke="#D92D20" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <defs>
+    <clipPath id="clip0_1_7746">
+      <rect width="20" height="20" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
+  </div>
+  <div class="w-full">
+  <h3 class="font-bold">PII Found</h3>
+  <p class="mt-4">Path: notebooks/.ipynb_checkpoints/simple-cnn-cifar10-wsl2-checkpoint.ipynb</p>
+  <p class="mt-4"><b>Description</b>:</p>
+  <p>A total of 1 PII found in cell number 22 with the following tag(s):</p>
+  <p>
+  <pre>{
+    "PERSON": 1
+}</pre>
+  </p>
+  <p class="mt-4">
+    <b>Location</b>: cell input
+  </p>
+  <div class="flex flex-row w-100 mt-4">
+    <div class="pr-4">
+      <p class="font-bold">Cell #22</p>
+    </div>
+    <div class="bg-white border-solid border border-none-border rounded-md overflow-x-auto w-[42rem]">
+      <span class="pl-4">### set the optimisation and loss function suitable to the job, metrics to use during training, and compile the model
+model.compile(optimizer='[PII]', loss=keras.losses.categorical_crossentropy, metrics=['accuracy'])</span>
+    </div>
+  </div>
+</div>
+</div>
+       
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-medium-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Medium</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+    <div class="flex flex-row items-center">
+      <span
+        class="rounded-md bg-low-base text-white text-center h-6 w-6"
+        >0</span
+      >
+      <h2 class="text-2xl font-bold ml-2">Low</h2>
+    </div>
+     
+      <div
+  class="bg-none-background border-solid border border-none-border rounded-xl p-4 my-2 flex flex-row w-full"
+>
+  <h3>No issues were found at this severity level</h3>
+</div> 
+    
+  
+</div>
+
+    <dialog id="filesScannedDialog"
+  class="p-0 border border-solid border-[#D8D8D8] rounded-md shadow-[0_1px_3px_rgba(16,24,40,0.1),0_1px_2px_rgba(16,24,40,0.06)]">
+  <div class="p-4">
+    <div class="flex flex-row justify-between">
+      <h1 class="font-bold text-lg">Files scanned</h1>
+      <a id="filesScannedCloseButton" class="cursor-pointer flex items-center">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M17.5 7.5L7.5 17.5M7.5 7.5L17.5 17.5" stroke="black" stroke-width="2" stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>
+      </a>
+    </div>
+    <ul class="md:mr-14">
+      
+      <li class="font-semibold text-xs mt-4">Notebooks</li>
+      <ul class="text-sm font-mono">
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/deploy-simple-cnn-cifar10.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/verify-environment.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/DeployResNet50v2-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/simple-cnn-cifar10-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/simple-cnn-cifar10-wsl2-checkpoint.ipynb </li>
+        
+        <li>/home/yanni/Documents/src/adversarial-ai-book/ch3/notebooks/.ipynb_checkpoints/deploy-simple-cnn-cifar10-checkpoint.ipynb </li>
+        
+      </ul>
+      
+      <li class="font-semibold text-xs mt-4">Requirements</li>
+      <ul class="text-sm font-mono">
+        
+      </ul>
+      
+    </ul>
+  </div>
+</dialog>
+
+    <footer class="my-4">
+  <div>
+    <span class="text-muted">Powered by: <a href="https://protectai.com/" target="_blank" rel="noreferrer"
+        class="underline text-blue-600 hover:text-blue-800">Protect AI</a></span>
+  </div>
+</footer>
+
+    <script>
+  const filesScannedButton = document.getElementById('filesScannedButton');
+  const filesScannedDialog = document.getElementById('filesScannedDialog');
+  const filesScannedCloseButton = document.getElementById('filesScannedCloseButton');
+
+  filesScannedButton.addEventListener('click', () => {
+    if (typeof filesScannedDialog.showModal === 'function') {
+      filesScannedDialog.showModal();
+    }
+  });
+
+  // Allows click outside of dialog to close dialog
+  filesScannedDialog.addEventListener('click', () => {
+    filesScannedDialog.close();
+  });
+
+  // Add close button
+  filesScannedCloseButton.addEventListener('click', () => {
+    filesScannedDialog.close();
+  })
+
+  filesScannedDialog.firstElementChild.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+</script>
+</body>

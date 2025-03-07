@@ -1,7 +1,7 @@
 # Welcome to Red Airange
 
-* AdversarialPlayground.md
-* SecurityAdversarialAI.md
+* AdversarialPlayground.md ch2
+* SecurityAdversarialAI.md ch3
 * PoisoningAttacks.md
 * ModelTampering.md
 * SupplyChain.md
