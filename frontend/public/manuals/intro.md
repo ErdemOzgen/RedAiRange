@@ -10,7 +10,7 @@
 * Defenses.md ch9
 * PrivacyPreserving.md ch10
 * GenAI.md ch11
-* LLMFoundations.md
+* LLMFoundations.md ch13
 * PromptsAttacks.md
 * PoisoningLLMs.md
 * GenAIScenarios.md
