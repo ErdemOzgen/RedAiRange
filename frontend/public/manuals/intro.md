@@ -11,7 +11,7 @@
 * PrivacyPreserving.md ch10
 * GenAI.md ch11
 * LLMFoundations.md ch13
-* PromptsAttacks.md
+* PromptsAttacks.md ch14
 * PoisoningLLMs.md
 * GenAIScenarios.md
 * MLSecOps.md
