@@ -1,5 +1,5 @@
 # Model Tampering with Trojan Horses and Model Reprogramming  
-
+# Use 'model_tampering_ai_target' machine for this practice 
 
 
 Here's a brief explanation of each file and folder in the `Model Tampering with Trojan Horses and Model Reprogramming ` directory:

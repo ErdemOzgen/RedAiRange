@@ -1,5 +1,5 @@
 # Poisoning Attacks: An In-Depth Exploration
-
+# Use 'poisoning_attacks_ai_target' machine for this practice 
 Adversarial AI has evolved beyond the traditional evasion techniques that fool trained models. One of the most insidious forms of adversarial manipulation is the poisoning attack—a method that targets the very foundation of machine learning systems: the data used during training. In this write-up, we delve into the nature of poisoning attacks, examine their various forms and real-world examples, and discuss the defenses available to mitigate their impact.
 
 

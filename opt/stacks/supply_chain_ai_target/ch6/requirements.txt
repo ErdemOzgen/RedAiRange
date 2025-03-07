@@ -1,0 +1,14 @@
+requests
+beautifulsoup4
+matplotlib
+tensorflow==2.15.*
+numpy
+pandas
+scikit-learn==1.1.2
+transformers
+textattack
+art
+mlflow
+tqdm
+Pillow
+

@@ -39,7 +39,7 @@ services:
       - MODEL_HASH=4145e6882f814492e1c7b55950a13cd64853691d8490bc4beb75f2d7094de6e4
       - API-KEY=testkey
     ports:
-      - 5000:5000
+      - 5090:5000
     volumes:
       - ./SecurityAdversarialAI/keys:/keys
       - ./SecurityAdversarialAI/api/deployed_models:/deployed_models

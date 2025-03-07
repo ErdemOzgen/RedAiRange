@@ -2,9 +2,9 @@
 
 * AdversarialPlayground.md ch2
 * SecurityAdversarialAI.md ch3
-* PoisoningAttacks.md
-* ModelTampering.md
-* SupplyChain.md
+* PoisoningAttacks.md ch4
+* ModelTampering.md ch5
+* SupplyChain.md ch6
 * EvasionAttacks.md
 * PrivacyAttacks.md
 * Defenses.md

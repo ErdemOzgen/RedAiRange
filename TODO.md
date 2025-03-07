@@ -6,3 +6,6 @@ ch2 added needs to test
 test targets
 
 Readme fix
+
+
+ssl keys for docker compose chapter security_adversarial_ai

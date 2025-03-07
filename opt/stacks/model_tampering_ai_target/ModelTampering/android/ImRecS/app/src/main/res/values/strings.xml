@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ImRecS</string>
+    <string name="action_settings">Settings</string>
+    <string name="use_test">Use Test Image</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="select_from_gallery">Select from Gallery</string>
+    <string name="image_view_desc">Image view for displaying selected or captured image</string>
+</resources>
+
