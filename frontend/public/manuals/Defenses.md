@@ -1,4 +1,5 @@
 # Defenses and Mitigations Against Model Extraction Attacks
+# Use "defenses_ai_target" machine for this practice
 
 Model extraction attacks can lead to unauthorized model replication, financial losses, and loss of competitive advantage. Defending against these threats requires a layered approach combining traditional cybersecurity controls, adversarial AI defenses, and proactive as well as detective measures.
 

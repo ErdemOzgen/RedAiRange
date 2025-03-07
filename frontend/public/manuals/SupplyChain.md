@@ -1,5 +1,7 @@
 
 # Supply Chain Attacks and Adversarial AI
+# Use 'security_adversarial_ai_target' machine for this practice 
+
 
 In this lesson, we will explore how supply chain vulnerabilities impact AI systems and the unique challenges adversarial attacks bring. You will learn about poisoning attacks on data and models, the risks of using third-party components, and practical strategies to mitigate these risks.
 

@@ -1,4 +1,6 @@
 # AI Security with MLSecOps
+# Use "mlsecops_ai_target" machine for this practice
+
 
 This document introduces MLSecOps—security for AI systems that blends the principles of DevSecOps and MLOps into a unified framework. It explains why MLSecOps is essential, outlines the evolving workflows and orchestration patterns, and demonstrates a practical implementation using Jenkins, MLFlow, and additional tools such as ML SBOMs.
 

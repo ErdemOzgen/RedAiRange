@@ -1,4 +1,6 @@
 # Adversarial Attacks with Prompts: A Detailed Explanation
+# Use 'prompts_attacks_ai_target' machine for this practice 
+
 
 This document provides a comprehensive overview of adversarial attacks on large language models (LLMs) using prompt injection techniques. It explains both the attack methods and the defense strategies, and it includes exercises for students to deepen their understanding.
 

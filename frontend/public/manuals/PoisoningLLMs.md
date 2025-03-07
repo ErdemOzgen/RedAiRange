@@ -1,4 +1,6 @@
 # Poisoning Attacks and LLMs
+# Use 'poisoning_llms_ai_target' machine for this practice 
+
 
 This document explores poisoning attacks targeting Large Language Models (LLMs) in two contexts:
 1. **Poisoning Embeddings in Retrieval-Augmented Generation (RAG)**

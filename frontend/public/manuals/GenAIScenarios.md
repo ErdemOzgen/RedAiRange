@@ -1,4 +1,6 @@
 # Advanced Generative AI Scenarios
+# Use "genai_scenarios_ai_target" machine for this practice
+
 
 This document explores advanced attack vectors and risks introduced by the evolving landscape of large language models (LLMs). With the rise of open-access models and new fine-tuning techniques, adversaries now have novel ways to poison models, extract sensitive training data, and even clone models. We cover:
 

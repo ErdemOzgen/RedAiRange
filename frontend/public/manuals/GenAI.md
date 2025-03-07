@@ -1,4 +1,6 @@
 # Generative AI – A New Frontier
+# Use "gen_ai_target" machine for this practice
+
 
 Generative AI represents a major shift from traditional predictive or discriminative models. Whereas predictive AI focuses on classification, regression, and decision-making, generative AI creates entirely new content—be it text, images, or other data types—by learning from existing datasets.
 

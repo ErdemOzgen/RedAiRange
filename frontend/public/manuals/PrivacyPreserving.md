@@ -1,4 +1,6 @@
 # Privacy-Preserving AI: A Detailed Handout
+# Use 'privacy_preserving_ai_target' machine for this practice 
+
 
 Privacy-preserving AI is a framework for designing data analytics, machine learning (ML), and AI systems that protect sensitive data while still enabling useful insights. In today’s data-driven world, these techniques are crucial to comply with regulations (e.g., the European GDPR) and minimize risks related to data breaches and unauthorized re-identification.
 

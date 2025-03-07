@@ -1,4 +1,6 @@
 # Privacy Attacks – Stealing Models
+# Use 'privacy_attacks_ai_target' machine for this practice 
+
 
 In today’s AI-driven world, privacy attacks have become a critical concern. Unlike attacks that tamper with model integrity (e.g., poisoning or evasion), privacy attacks aim to extract sensitive information from AI models. These attacks not only threaten individual privacy and organizational security but also risk the unauthorized replication of proprietary models. This handout covers the fundamental types of privacy attacks, common model extraction techniques, and practical attack scenarios using the Adversarial Robustness Toolbox (ART).
 

@@ -1,5 +1,7 @@
 # LLM Foundations for Adversarial AI  
-*Detailed Handout*
+# Use "llm_foundations_ai_target" machine for this practice
+
+
 
 ---
 

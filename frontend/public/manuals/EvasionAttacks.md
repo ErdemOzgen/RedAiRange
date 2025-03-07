@@ -1,4 +1,5 @@
 # Evasion Attacks against Deployed AI
+# Use "evasion_attacks_ai_target" machine for this practice
 
 This handout provides an in-depth overview of evasion attacks in adversarial machine learning. You will learn the fundamentals behind these attacks, the importance of understanding them, and how attackers gather intelligence to craft adversarial examples. A practical example using FGSM (Fast Gradient Sign Method) is also provided.
 
