@@ -6,7 +6,7 @@
 * ModelTampering.md ch5
 * SupplyChain.md ch6
 * EvasionAttacks.md ch7
-* PrivacyAttacks.md
+* PrivacyAttacks.md ch8
 * Defenses.md
 * PrivacyPreserving.md
 * GenAI.md
