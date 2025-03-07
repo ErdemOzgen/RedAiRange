@@ -1,0 +1,9 @@
+pandas
+numpy
+tensorflow==2.15.*
+scikit-learn==1.1.2
+tensorflow_privacy
+opencv-python
+matplotlib
+gtts
+pydub

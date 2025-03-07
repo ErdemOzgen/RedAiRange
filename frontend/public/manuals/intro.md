@@ -8,7 +8,7 @@
 * EvasionAttacks.md ch7
 * PrivacyAttacks.md ch8
 * Defenses.md ch9
-* PrivacyPreserving.md
+* PrivacyPreserving.md ch10
 * GenAI.md
 * LLMFoundations.md
 * PromptsAttacks.md
