@@ -1,4 +1,4 @@
-# Welcome to Red Airange
+# Welcome to Red Ai Range (RAR)
 
 * AdversarialPlayground.md ch2
 * SecurityAdversarialAI.md ch3
