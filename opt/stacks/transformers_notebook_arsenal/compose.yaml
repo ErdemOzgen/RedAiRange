@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  transformer-notebook:
+  transformers_notebook_arsenal:
     stdin_open: true
     tty: true
     #user: root # Run container as root
