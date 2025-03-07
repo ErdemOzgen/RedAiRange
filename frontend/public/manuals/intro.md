@@ -12,7 +12,7 @@
 * GenAI.md ch11
 * LLMFoundations.md ch13
 * PromptsAttacks.md ch14
-* PoisoningLLMs.md
+* PoisoningLLMs.md ch15
 * GenAIScenarios.md
 * MLSecOps.md
 
