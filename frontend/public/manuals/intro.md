@@ -13,8 +13,8 @@
 * LLMFoundations.md ch13
 * PromptsAttacks.md ch14
 * PoisoningLLMs.md ch15
-* GenAIScenarios.md
-* MLSecOps.md
+* GenAIScenarios.md ch16
+* MLSecOps.md ch18
 
 
 

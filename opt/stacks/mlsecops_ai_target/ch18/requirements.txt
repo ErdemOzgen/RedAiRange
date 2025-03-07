@@ -1,0 +1,9 @@
+mlflow
+torch
+tensorflow==2.15.*
+numpy
+dill
+joblib
+requests
+cyclonedx-python-lib
+packageurl-python

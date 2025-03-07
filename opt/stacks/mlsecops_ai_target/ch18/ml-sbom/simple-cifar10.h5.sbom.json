@@ -1,0 +1,164 @@
+{
+  "components": [
+    {
+      "bom-ref": "BomRef.8732551383677291.1694592955975316",
+      "name": "fire",
+      "purl": "pkg:pypi/fire",
+      "type": "library",
+      "version": ""
+    },
+    {
+      "bom-ref": "BomRef.6677100179643337.04468482380814853",
+      "name": "sentencepiece",
+      "purl": "pkg:pypi/sentencepiece",
+      "type": "library",
+      "version": ""
+    },
+    {
+      "bom-ref": "BomRef.41114127520560084.22463179420843837",
+      "name": "simple-parsing",
+      "purl": "pkg:pypi/simple-parsing",
+      "type": "library",
+      "version": ""
+    },
+    {
+      "bom-ref": "BomRef.04567717257653059.10130063696581293",
+      "name": "torch",
+      "properties": [
+        {
+          "name": "sha256",
+          "value": "27e1757eb77b936e5eb64ad07eaad1f0edb26478c2fc478b94ba903615a5feef"
+        }
+      ],
+      "purl": "pkg:pypi/torch@2.1.0",
+      "type": "library",
+      "version": "2.1.0"
+    },
+    {
+      "bom-ref": "BomRef.4981141576496695.745102535550531",
+      "name": "xformers",
+      "purl": "pkg:pypi/xformers",
+      "type": "library",
+      "version": ""
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "BomRef.8732551383677291.1694592955975316"
+    },
+    {
+      "ref": "BomRef.6677100179643337.04468482380814853"
+    },
+    {
+      "ref": "BomRef.04567717257653059.10130063696581293"
+    },
+    {
+      "ref": "BomRef.4981141576496695.745102535550531"
+    },
+    {
+      "ref": "BomRef.41114127520560084.22463179420843837"
+    },
+    {
+      "dependsOn": [
+        "BomRef.4981141576496695.745102535550531",
+        "BomRef.04567717257653059.10130063696581293",
+        "BomRef.8732551383677291.1694592955975316",
+        "BomRef.6677100179643337.04468482380814853",
+        "BomRef.41114127520560084.22463179420843837"
+      ],
+      "ref": "myModel"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "myModel",
+      "name": "simple-cifar10.h5",
+      "properties": [
+        {
+          "name": "adversarial_robustness",
+          "value": "0.89"
+        },
+        {
+          "name": "fairness",
+          "value": "0.93"
+        },
+        {
+          "name": "hash",
+          "value": "8af6e900f6cdcdd833c6ada836c5c7ea59a41f12117ca63e02957f3302f86a9d"
+        },
+        {
+          "name": "machine_ethics",
+          "value": "0.85"
+        },
+        {
+          "name": "out_of_distribution_robustness",
+          "value": "0.75"
+        },
+        {
+          "name": "privacy",
+          "value": "0.88"
+        },
+        {
+          "name": "robustness_to_adversarial_demonstrations",
+          "value": "0.79"
+        },
+        {
+          "name": "stereotype_and_bias",
+          "value": "0.81"
+        },
+        {
+          "name": "toxicity",
+          "value": "0.92"
+        }
+      ],
+      "type": "machine-learning-model"
+    },
+    "timestamp": "2024-06-30T16:40:49.420621+00:00",
+    "tools": [
+      {
+        "externalReferences": [
+          {
+            "type": "build-system",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/actions"
+          },
+          {
+            "type": "distribution",
+            "url": "https://pypi.org/project/cyclonedx-python-lib/"
+          },
+          {
+            "type": "documentation",
+            "url": "https://cyclonedx-python-library.readthedocs.io/"
+          },
+          {
+            "type": "issue-tracker",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/issues"
+          },
+          {
+            "type": "license",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/LICENSE"
+          },
+          {
+            "type": "release-notes",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/CHANGELOG.md"
+          },
+          {
+            "type": "vcs",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib"
+          },
+          {
+            "type": "website",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/#readme"
+          }
+        ],
+        "name": "cyclonedx-python-lib",
+        "vendor": "CycloneDX",
+        "version": "7.1.0"
+      }
+    ]
+  },
+  "serialNumber": "urn:uuid:962e84f2-621d-4f1f-bf16-fa50d7ee66b7",
+  "version": 1,
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5"
+}

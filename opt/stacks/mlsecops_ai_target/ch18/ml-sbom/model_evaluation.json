@@ -1,0 +1,10 @@
+{
+    "toxicity": 0.92,
+    "stereotype_and_bias": 0.81,
+    "adversarial_robustness": 0.89,
+    "out_of_distribution_robustness": 0.75,
+    "privacy": 0.88,
+    "robustness_to_adversarial_demonstrations": 0.79,
+    "machine_ethics": 0.85,
+    "fairness": 0.93
+}
