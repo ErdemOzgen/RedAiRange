@@ -5,7 +5,7 @@
 * PoisoningAttacks.md ch4
 * ModelTampering.md ch5
 * SupplyChain.md ch6
-* EvasionAttacks.md
+* EvasionAttacks.md ch7
 * PrivacyAttacks.md
 * Defenses.md
 * PrivacyPreserving.md

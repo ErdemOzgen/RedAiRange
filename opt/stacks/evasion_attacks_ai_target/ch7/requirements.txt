@@ -1,0 +1,8 @@
+numpy
+tensorflow==2.15.*
+matplotlib
+Pillow
+art
+transformers
+textattack
+datasets
