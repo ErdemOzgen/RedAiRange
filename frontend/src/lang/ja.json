@@ -97,7 +97,7 @@
     "connecting...": "ソケットサーバーに接続中…",
     "newUpdate": "新しいバージョン",
     "redairangeAgent": "redairange エージェント",
-    "redairangeURL": "redairangeのURL (例: http://127.0.0.1:5001)",
+    "redairangeURL": "redairangeのURL (例: http://127.0.0.1:5002)",
     "agentOnline": "オンライン",
     "agentOffline": "オフライン",
     "connecting": "接続中",

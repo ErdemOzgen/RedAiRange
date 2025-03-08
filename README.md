@@ -52,7 +52,7 @@ services:
     restart: unless-stopped
     ports:
       # Host Port : Container Port
-      - 5001:5001
+      #- 5001:5001
       - 5002:5002
 
     volumes:
@@ -73,7 +73,7 @@ services:
       # Define stacks directory explicitly:
       - REDAIRANGE_STACKS_DIR=/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
       #- REDAIRANGE_STACKS_DIR=/opt/stacks # for linux and windows user you can use this
-      #- REDAIRANGE_PORT=5002
+      - REDAIRANGE_PORT=5002
 ```
 
 ---

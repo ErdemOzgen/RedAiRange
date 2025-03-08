@@ -100,7 +100,7 @@
     "url": "URL | URL",
     "reconnecting...": "재연결 중…",
     "newUpdate": "새 업데이트",
-    "redairangeURL": "redairange URL (예. http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (예. http://127.0.0.1:5002)",
     "agentOnline": "온라인",
     "agentOffline": "오프라인",
     "connect": "연결",

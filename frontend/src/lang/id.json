@@ -100,7 +100,7 @@
     "Also check beta release": "Juga cek keluaran beta",
     "Allowed commands:": "Perintah yang diperbolehkan:",
     "reverseProxyMsg2": "Lihat cara mengonfigurasinya untuk WebSocket",
-    "redairangeURL": "Alamat redairange (cth. http://127.0.0.1:5001)",
+    "redairangeURL": "Alamat redairange (cth. http://127.0.0.1:5002)",
     "connecting": "Menghubungkan",
     "addAgent": "Tambah Agen",
     "agentAddedSuccessfully": "Agen sukses ditambahkan.",

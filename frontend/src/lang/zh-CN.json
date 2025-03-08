@@ -100,7 +100,7 @@
     "extra": "额外",
     "downStack": "停止并置于非活动状态",
     "newUpdate": "新版本",
-    "redairangeURL": "redairange地址 (例如 http://127.0.0.1:5001)",
+    "redairangeURL": "redairange地址 (例如 http://127.0.0.1:5002)",
     "agentOnline": "在线",
     "agentOffline": "离线",
     "connecting": "连接中",

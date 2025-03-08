@@ -102,7 +102,7 @@
     "newUpdate": "Nova Atualização",
     "redairangeAgent": "Agente redairange | Agentes redairange",
     "currentEndpoint": "Atual",
-    "redairangeURL": "redairange URL (ex. http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (ex. http://127.0.0.1:5002)",
     "agentOnline": "Online",
     "agentOffline": "Offline",
     "connecting": "Conectando",

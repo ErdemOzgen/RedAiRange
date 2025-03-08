@@ -101,7 +101,7 @@
     "reconnecting...": "Återansluter…",
     "newUpdate": "Ny uppdatering",
     "currentEndpoint": "Nuvarande",
-    "redairangeURL": "redairange URL (ex. http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (ex. http://127.0.0.1:5002)",
     "agentOnline": "On-line",
     "agentOffline": "Off-line",
     "connecting": "Ansluter",

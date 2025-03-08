@@ -111,6 +111,6 @@
     "agentRemovedSuccessfully": "ลบเอเย่นต์สำเร็จ",
     "removeAgent": "ลบเอเย่นต์",
     "removeAgentMsg": "คุณแน่ใจหรือไม่ที่จะลบเอเย่นต์นี้?",
-    "redairangeURL": "ลิ้งก์ redairange (เช่น http://127.0.0.1:5001)",
+    "redairangeURL": "ลิ้งก์ redairange (เช่น http://127.0.0.1:5002)",
     "LongSyntaxNotSupported": "Syntax แบบยาสไม่รองรับที่นี่ กรุณาใช้ตัวแก้ไข YAML"
 }

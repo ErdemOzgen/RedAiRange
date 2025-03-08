@@ -106,7 +106,7 @@
     "agentOffline": "Offline",
     "connecting": "In connessione",
     "connect": "Connetti",
-    "redairangeURL": "redairange URL (ad esempio http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (ad esempio http://127.0.0.1:5002)",
     "agentRemovedSuccessfully": "Agente rimosso con successo.",
     "removeAgent": "Rimuovi Agente",
     "removeAgentMsg": "Sei sicuro di voler rimuovere questo agente?",

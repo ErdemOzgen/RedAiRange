@@ -100,7 +100,7 @@
     "Cannot connect to the socket server.": "Impossible de se connecter au serveur socket.",
     "reconnecting...": "Reconnexion…",
     "newUpdate": "Nouvelle mise à jour",
-    "redairangeURL": "URL de redairange (e.g. http://127.0.0.1:5001)",
+    "redairangeURL": "URL de redairange (e.g. http://127.0.0.1:5002)",
     "agentOnline": "En ligne",
     "agentOffline": "Hors ligne",
     "connecting": "Connexion",

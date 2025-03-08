@@ -101,7 +101,7 @@
     "url": "Dirección URL | Direcciones URLs",
     "extra": "Addicional",
     "currentEndpoint": "Corriente",
-    "redairangeURL": "URL de redairange (ej. http://127.0.0.1:5001)",
+    "redairangeURL": "URL de redairange (ej. http://127.0.0.1:5002)",
     "agentOnline": "Conectado",
     "agentOffline": "Desconectado",
     "connect": "Conectar",

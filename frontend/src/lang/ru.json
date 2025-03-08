@@ -110,7 +110,7 @@
     "removeAgent": "Удалить агента",
     "removeAgentMsg": "Вы уверены, что хотите удалить этого агента?",
     "redairangeAgent": "Агент redairange | Агенты redairange",
-    "redairangeURL": "URL-адрес redairange (например: http://127.0.0.1:5001)",
+    "redairangeURL": "URL-адрес redairange (например: http://127.0.0.1:5002)",
     "agentRemovedSuccessfully": "Агент успешно удален.",
     "LongSyntaxNotSupported": "Длинный синтаксис здесь не поддерживается. Пожалуйста, используйте редактор YAML."
 }

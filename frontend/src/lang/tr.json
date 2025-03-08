@@ -102,7 +102,7 @@
     "newUpdate": "Yeni Güncelleme",
     "redairangeAgent": "redairange Aracısı | redairange Aracıları",
     "currentEndpoint": "Varsayılan",
-    "redairangeURL": "redairange URL (ör. http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (ör. http://127.0.0.1:5002)",
     "agentOnline": "Çevrimiçi",
     "agentOffline": "Çevrimdışı",
     "connecting": "Bağlanıyor",

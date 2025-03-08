@@ -91,7 +91,7 @@
     "newUpdate": "Nova actualització",
     "redairangeAgent": "Agent redairange | Agents redairange",
     "currentEndpoint": "Actual",
-    "redairangeURL": "URL de redairange (ex. http://127.0.0.1:5001)",
+    "redairangeURL": "URL de redairange (ex. http://127.0.0.1:5002)",
     "agentOnline": "En línia",
     "agentOffline": "Fora de línia",
     "connecting": "Connectant",

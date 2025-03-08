@@ -108,7 +108,7 @@
     "addAgent": "Додати агент",
     "removeAgent": "Видалити агент",
     "redairangeAgent": "redairange-агент | redairange-агенти",
-    "redairangeURL": "redairange URL (напр. http://127.0.0.1:5001)",
+    "redairangeURL": "redairange URL (напр. http://127.0.0.1:5002)",
     "agentRemovedSuccessfully": "Агент успішно видалено.",
     "agentAddedSuccessfully": "Агент успішно додано.",
     "removeAgentMsg": "Ви впевнені, що хочете видалити цей агент?",
