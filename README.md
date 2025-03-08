@@ -8,6 +8,10 @@ Red AI Range (RAR) is a comprehensive security platform designed specifically fo
 
 As organizations increasingly integrate AI systems into critical infrastructure, the need for robust security testing has become essential. RAR addresses this need by providing a standardized framework that consolidates various AI vulnerabilities in one accessible environment for both academic research and industrial security operations.
 
+
+![](./imgs/main.png)
+
+
 ## Core Capabilities
 
 ### Red Team Operations Support
