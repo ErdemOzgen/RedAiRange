@@ -5,7 +5,7 @@ services:
     ports:
       # Host Port : Container Port
       #- 5001:5001
-      - 5001:5002
+      - 5002:5002
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
