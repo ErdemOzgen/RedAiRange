@@ -1,8 +1,7 @@
 {
     "files": [
       "intro.md",
-      "usage.md",
-      "advanced.md",
+      "training.md",
       "AdversarialPlayground.md",
       "SecurityAdversarialAI.md",
       "PoisoningAttacks.md",
