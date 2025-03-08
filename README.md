@@ -107,7 +107,56 @@ RAR serves as a centralized platform for security professionals across various d
 
 ## Getting Started
 
-[Detailed installation and usage instructions would be included here in the actual README]
+![](./imgs/main.png)
+
+
+# Red AI Range (RAR) Dashboard Overview
+
+The Red AI Range (RAR) dashboard provides a comprehensive user interface designed to simplify AI security testing and vulnerability assessment. This centralized interface supports streamlined deployment and management of various security scenarios and operational tools.
+
+## Main Components
+
+### Top Navigation
+- **Range Manual**: Access detailed documentation and guidelines.
+- **Compose**: Deploy custom testing stacks or environments.
+- **Arsenal**: Launch security assessment tools and exploitation frameworks.
+- **Target Machines**: Set up intentionally vulnerable AI targets for testing.
+
+### Activity Status Overview
+The dashboard prominently displays the status of the deployed environments:
+- **Active**: Number of environments currently running.
+- **Exited**: Number of environments recently terminated.
+- **Inactive**: Number of available but not currently deployed environments.
+
+![](./imgs/ai-target-started.png)
+### Environment Management
+Each AI security scenario can be rapidly managed through the following controls:
+- **Docker Run**: Quickly execute Docker commands for selected environments.
+- **Convert to Compose**: Transform running environments into reusable docker-compose files.
+- **Convert to Target/Arsenal**: Categorize and deploy environments either as a target machine (for vulnerability testing) or as an arsenal tool (for security assessments).
+
+![](./imgs/ai-target-started.png)
+
+### AI Security Scenarios List
+The left-hand pane displays various predefined AI security scenarios, including but not limited to:
+- Adversarial Playground
+- Blackcart Arsenal
+- Defense AI Target
+- Evasion Attacks
+- Gen AI Target
+- Model Tampering
+- Privacy Attacks
+
+
+![](./imgs/agent.png)
+### Agent Control Panel
+Manage and monitor connected remote agents:
+- Easily add new agents.
+- View current agent connectivity status.
+------------
+
+
+![](./imgs/ai-target-started.png)
 
 ## Contributing
 
