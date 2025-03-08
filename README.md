@@ -14,7 +14,92 @@ As organizations increasingly integrate AI systems into critical infrastructure,
 
 ## Installation
 
-RAR can run in docker witthout any limitation from native ones
+You can run **RedAiRange (RAR)** using Docker without limitations compared to a native setup. Follow the instructions below carefully for a seamless installation.
+
+---
+
+### Docker Setup
+
+1. **Clone the Repository:**
+
+```bash
+git clone https://github.com/ErdemOzgen/RedAiRange.git
+cd RedAiRange
+```
+
+
+
+2. **Start Docker Compose:**
+
+```bash
+docker compose up -d
+```
+
+#### ⚠️ Important Notice for macOS Users
+
+On macOS, Docker may encounter file sharing issues. **Always use the full absolute path** when configuring volumes to avoid problems.
+
+---
+
+### Recommended `docker-compose.yml` for MacOs User
+
+Use the following configuration as your `docker-compose.yml`:
+
+```yaml
+services:
+  redairange:
+    image: erdemozgen/redairange:1
+    restart: unless-stopped
+    ports:
+      # Host Port : Container Port
+      - 5001:5001
+      - 5002:5002
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+
+      # To use private Docker registries, share the auth file:
+      # - /root/.docker/:/root/.docker
+
+      # ⚠️ Stacks Directory Configuration
+      # Ensure the following:
+      # 1. Use FULL absolute paths. Do NOT use relative paths.
+      # 2. Host path and container path MUST match exactly.
+      # macOS Example:
+      - /Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks:/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+      #- ./opt/stacks:/opt/stacks # for linux and windows user you can use this
+    environment:
+      # Define stacks directory explicitly:
+      - REDAIRANGE_STACKS_DIR=/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+      #- REDAIRANGE_STACKS_DIR=/opt/stacks # for linux and windows user you can use this
+      #- REDAIRANGE_PORT=5002
+```
+
+---
+
+### Native Development Server (Optional)
+
+If you prefer running RAR locally for development purposes:
+
+1. **Install Node.js:**
+
+```bash
+nvm install v18.16.0
+nvm use v18.16.0
+```
+
+2. **Start Development Server:**
+
+```bash
+npm install
+npm run dev
+```
+
+Ensure all dependencies are correctly installed.
+Enjoy !
+---
+
 
 ## Core Capabilities
 
