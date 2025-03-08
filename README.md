@@ -12,6 +12,10 @@ As organizations increasingly integrate AI systems into critical infrastructure,
 ![](./imgs/main.png)
 
 
+## Installation
+
+RAR can run in docker witthout any limitation from native ones
+
 ## Core Capabilities
 
 ### Red Team Operations Support
