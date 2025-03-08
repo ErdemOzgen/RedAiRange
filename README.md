@@ -128,7 +128,7 @@ The dashboard prominently displays the status of the deployed environments:
 - **Exited**: Number of environments recently terminated.
 - **Inactive**: Number of available but not currently deployed environments.
 
-![](./imgs/ai-target-started.png)
+
 ### Environment Management
 Each AI security scenario can be rapidly managed through the following controls:
 - **Docker Run**: Quickly execute Docker commands for selected environments.
@@ -153,10 +153,10 @@ The left-hand pane displays various predefined AI security scenarios, including 
 Manage and monitor connected remote agents:
 - Easily add new agents.
 - View current agent connectivity status.
-------------
 
 
-![](./imgs/ai-target-started.png)
+
+
 
 ## Contributing
 
