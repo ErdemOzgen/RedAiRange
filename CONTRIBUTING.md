@@ -94,7 +94,7 @@ You can use Vue.js devtools Chrome extension for debugging.
 ### Build the frontend
 
 ```bash
-pnpm run build
+npm run build
 ```
 
 ## Database Migration
@@ -117,7 +117,7 @@ Both frontend and backend share the same package.json. However, the frontend dep
 Should only be done by the maintainer.
 
 ```bash
-pnpm update
+npm update
 ````
 
 It should update the patch release version only.
