@@ -160,7 +160,7 @@ Manage and monitor connected remote agents:
 
 ## Contributing
 
-[Information about how to contribute to the project would be included here]
+Please see [here](./CONTRIBUTING.md)
 
 
 # Red AI Range (RAR) - Comprehensive Training Modules
