@@ -96,6 +96,7 @@ nvm use v18.16.0
 2. **Start Development Server:**
 
 ```bash
+rm package-lock.json # You may need this
 npm install
 npm run dev
 ```
