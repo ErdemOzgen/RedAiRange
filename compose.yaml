@@ -18,11 +18,11 @@ services:
       # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
       # ⚠️ 1. FULL path only. No relative path (MUST)
       # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
-      # macOs use full path like /Users/erdem/stacks 
-      #- /Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks:/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+      # macOs use full path like: 
+      #- /Users/yourusername/Desktop/RedAiRange/opt/stacks:/Users/yourusername/Desktop/RedAiRange/opt/stacks
       - ./opt/stacks:/opt/stacks
     environment:
       # Tell redairange where is your stacks directory
-      #- REDAIRANGE_STACKS_DIR=/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+      #- REDAIRANGE_STACKS_DIR=/Users/yourusername/Desktop/RedAiRange/opt/stacks
       - REDAIRANGE_STACKS_DIR=/opt/stacks
       - REDAIRANGE_PORT=5002

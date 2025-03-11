@@ -1,6 +1,6 @@
-## Can I create a pull request for redairange?
+## Can I create a pull request for Red AI Range?
 
-Yes or no, it depends on what you will try to do. Since I don't want to waste your time, be sure to **create open a discussion, so we can have a discussion first**. Especially for a large pull request or you don't know if it will be merged or not.
+Both yes and no, it depends on what you will try to do. Since I don't want to waste your time, be sure to **create open a discussion, so we can have a discussion first**. Especially for a large pull request or when you don't know if it will be merged or not.
 
 Here are some references:
 
@@ -16,15 +16,15 @@ Here are some references:
 
 ### ❌ Won't be merged:
 - A dedicated PR for translating existing languages (see [these instructions](https://github.com/ErdemOzgen/redairange/blob/master/frontend/src/lang/README.md))
-- Do not pass the auto-test
+- Failed the auto-test
 - Any breaking changes
 - Duplicated pull requests
 - Buggy
-- UI/UX is not close to redairange
-- Modifications or deletions of existing logic without a valid reason.
+- UI/UX is not close to current RAR UI/UX
+- Modifications or deletions of existing logic without a valid reason
 - Adding functions that is completely out of scope
 - Converting existing code into other programming languages
-- Unnecessarily large code changes that are hard to review and cause conflicts with other PRs.
+- Unnecessarily large code changes that are hard to review and cause conflicts with other PRs
 
 The above cases may not cover all possible situations.
 
@@ -99,7 +99,7 @@ npm run build
 
 ## Database Migration
 
-TODO
+TBD
 
 ## Dependencies
 
@@ -118,7 +118,7 @@ Should only be done by the maintainer.
 
 ```bash
 npm update
-````
+```
 
 It should update the patch release version only.
 
@@ -138,4 +138,4 @@ If you want to help by translating Uptime Kuma into your language, please visit 
 ## Spelling & Grammar
 
 Feel free to correct the grammar in the documentation or code.
-My mother language is not English and my grammar is not that great.
+My first language is not English and my grammar is not that great.

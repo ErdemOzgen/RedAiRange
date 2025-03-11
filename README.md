@@ -2,8 +2,6 @@
 
 ![](./frontend/public/redai.png)
 
-## Overview
-
 Red AI Range (RAR) is a comprehensive security platform designed specifically for AI red teaming and vulnerability assessment. It creates realistic environments where security professionals can systematically discover, analyze, and mitigate AI vulnerabilities through controlled testing scenarios.
 
 As organizations increasingly integrate AI systems into critical infrastructure, the need for robust security testing has become essential. RAR addresses this need by providing a standardized framework that consolidates various AI vulnerabilities in one accessible environment for both academic research and industrial security operations.
@@ -11,12 +9,18 @@ As organizations increasingly integrate AI systems into critical infrastructure,
 
 ![](./imgs/main.png)
 
+## Table of Contents
+-  [Installation and Quick Start](#installation-and-quick-start)
+-  [Features and Capabilities](#features-and-capabilities)
+-  [Applications and Use Cases](#applications-and-use-cases)
+-  [UI Overview and Getting Started](#ui-overview-and-getting-started)
+-  [Contributing](#contributing)
+-  [Red AI Range (RAR) Training Modules](#red-ai-range-rar-training-modules)
 
-## Installation
+## Installation and Quick Start
 
-You can run **RedAiRange (RAR)** using Docker without limitations compared to a native setup. Follow the instructions below carefully for a seamless installation.
+You can run **RedAIRange (RAR)** using Docker without limitations compared to a native setup. Follow the instructions below carefully for a seamless installation.
 
----
 
 ### Docker Setup
 
@@ -27,21 +31,20 @@ git clone https://github.com/ErdemOzgen/RedAiRange.git
 cd RedAiRange
 ```
 
-
-
 2. **Start Docker Compose:**
 
 ```bash
 docker compose up -d
 ```
+This command will start the Red AI Range for you and make it accessible at http://localhost:5002 if you haven't changed the port on compose.yaml file.
 
-#### ⚠️ Important Notice for macOS Users
+#### ⚠️ Important Note for macOS Users
 
 On macOS, Docker may encounter file sharing issues. **Always use the full absolute path** when configuring volumes to avoid problems.
 
 ---
 
-### Recommended `docker-compose.yml` for MacOs User
+#### Recommended `docker-compose.yml` for MacOS User
 
 Use the following configuration as your `docker-compose.yml`:
 
@@ -67,11 +70,12 @@ services:
       # 1. Use FULL absolute paths. Do NOT use relative paths.
       # 2. Host path and container path MUST match exactly.
       # macOS Example:
-      - /Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks:/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+
+      - /Users/yourusername/Desktop/RedAiRange/opt/stacks:/Users/yourusername/Desktop/RedAiRange/opt/stacks
       #- ./opt/stacks:/opt/stacks # for linux and windows user you can use this
     environment:
       # Define stacks directory explicitly:
-      - REDAIRANGE_STACKS_DIR=/Users/erdem/Desktop/blackhat/RedAiRange/opt/stacks
+      - REDAIRANGE_STACKS_DIR=/Users/yourusername/Desktop/RedAiRange/opt/stacks
       #- REDAIRANGE_STACKS_DIR=/opt/stacks # for linux and windows user you can use this
       - REDAIRANGE_PORT=5002
 ```
@@ -97,11 +101,13 @@ npm run dev
 ```
 
 Ensure all dependencies are correctly installed.
-Enjoy !
----
 
 
-## Core Capabilities
+### Reminder About Docker Containers
+
+As it will be elaborately mentioned in following sections, RAR operates as a Docker container while controlling other Docker containers through the Docker socket mounted as a volume. All scenarios, vulnerable AI components and other entities take place as a Docker container and therefore, a Docker image. Due to the nature of AI components, size of these images can be very big and take some time to be installed and run. This will probably be the case with your own Docker containers created in RAR. At the initialization, you don't need lots of space, resources or time but consider that these needs can drastically change according to your purposes with the RAR.
+
+## Features and Capabilities
 
 ### Red Team Operations Support
 
@@ -198,31 +204,32 @@ RAR serves as a centralized platform for security professionals across various d
 - Research into fundamental AI security challenges
 - Development of standardized AI security curricula
 
-## Getting Started
-
-![](./imgs/main.png)
-
-
-# Red AI Range (RAR) Dashboard Overview
+## UI Overview and Getting Started
 
 The Red AI Range (RAR) dashboard provides a comprehensive user interface designed to simplify AI security testing and vulnerability assessment. This centralized interface supports streamlined deployment and management of various security scenarios and operational tools.
 
-## Main Components
+### Main Components of the UI
 
-### Top Navigation
+#### Top Navigation
 - **Range Manual**: Access detailed documentation and guidelines.
-- **Compose**: Deploy custom testing stacks or environments.
-- **Arsenal**: Launch security assessment tools and exploitation frameworks.
-- **Target Machines**: Set up intentionally vulnerable AI targets for testing.
+![](./imgs/range-manual.png)
 
-### Activity Status Overview
+- **Compose**: Deploy custom testing stacks or environments.
+![](./imgs/console.png)
+
+- **Arsenal**: Launch security assessment tools and exploitation frameworks.
+![](./imgs/console.png)
+
+- **Target Machines**: Set up intentionally vulnerable AI targets for testing.
+![](./imgs/target-machines.png)
+
+#### Activity Status
 The dashboard prominently displays the status of the deployed environments:
 - **Active**: Number of environments currently running.
 - **Exited**: Number of environments recently terminated.
 - **Inactive**: Number of available but not currently deployed environments.
 
-
-### Environment Management
+#### Environment Management
 Each AI security scenario can be rapidly managed through the following controls:
 - **Docker Run**: Quickly execute Docker commands for selected environments.
 - **Convert to Compose**: Transform running environments into reusable docker-compose files.
@@ -230,7 +237,7 @@ Each AI security scenario can be rapidly managed through the following controls:
 
 ![](./imgs/ai-target-started.png)
 
-### AI Security Scenarios List
+#### AI Security Scenarios List
 The left-hand pane displays various predefined AI security scenarios, including but not limited to:
 - Adversarial Playground
 - Blackcart Arsenal
@@ -240,25 +247,50 @@ The left-hand pane displays various predefined AI security scenarios, including 
 - Model Tampering
 - Privacy Attacks
 
-
 ![](./imgs/agent.png)
-### Agent Control Panel
+#### Agent Control Panel
 Manage and monitor connected remote agents:
 - Easily add new agents.
 - View current agent connectivity status.
 
+#### Additional Components
+- **Settings**: Allows changing visuals, configurations and credentials.
+![](./imgs/settings.png)
+- **Console**: A basic terminal for performing simple actions on the Docker container.
+- **Record**: When enabled, starts a video recording to document actions taken by the user for knowledge build-up purposes.
+
+### Getting Started by Running a Machine with a Scenario
+
+As mentioned before, left pane contains various predefined AI security scenarios and the related containers with vulnerable AI components. Although you can run a target machine from Target Machine page with your configurations, starting with a scenario is recommended.
+
+For example, when you click on "adversarial_playground_ai_target" from the left pane, this page will greet you.
+![](./imgs/inactive-machine.png)
+
+When it is started, required images will be pulled and Docker container will be started. You can monitor the process from terminals on this page. In addition, you can access a shell from the container from this page.
+![](./imgs/active-machine.png)
+
+After the machine is started, you will be able to access the ports that are mentioned above of the terminal. This port is for accessing the Jupyter notebook with materials related to the scenario. In this example, http://localhost:11000 will redirect you a login page when you access it for the first time:
+
+![](./imgs/jupyter-login.png)
+
+In this page, you can create a password or directly use the token to access Jupyter Notebook. The token can be found on the terminal of the machine. With this token, you can pass the authentication and access this page:
+
+![](./imgs/jupyter-notebook.png)
 
 
-
+From here, you can follow the scenarios, improve your AI/ML skills, learn different attack methodologies and more.
 
 ## Contributing
 
-Please see [here](./CONTRIBUTING.md)
+Contributions are welcome! Please see [CONTRIBUTING.MD](./CONTRIBUTING.md) for details on how to get involved, file bug reports, and submit pull requests.
+
+Enjoy exploring and securing AI systems with RedAIRange! If you have any questions or run into issues, feel free to open an issue or start a discussion in this repository.
 
 
-# Red AI Range (RAR) - Comprehensive Training Modules
+## Red AI Range (RAR) Training Modules
+These are predefined and suggested modules that can be followed for getting trained about AI security. Scenarios mentioned both above and in RAR aim to teach about these topics.
 
-## Module 1: Foundations of AI Security
+### Module 1: Foundations of AI Security
 - **AI/ML Fundamentals**
   - Understanding AI and Machine Learning
   - Types of ML and the ML lifecycle
@@ -287,7 +319,7 @@ Please see [here](./CONTRIBUTING.md)
   - Access control implementation
   - Securing code and artifacts
 
-## Module 2: Model Development Attacks
+### Module 2: Model Development Attacks
 
 - **Poisoning Attack Techniques**
   - Basics of poisoning attacks
@@ -329,7 +361,7 @@ Please see [here](./CONTRIBUTING.md)
   - Data poisoning in supply chains
   - Sentiment analysis manipulation techniques
 
-## Module 3: Attacks on Deployed AI
+### Module 3: Attacks on Deployed AI
 
 - **Evasion Attack Techniques**
   - Fundamentals of evasion attacks
@@ -393,7 +425,7 @@ Please see [here](./CONTRIBUTING.md)
   - Homomorphic encryption techniques
   - Practical privacy-preserving ML implementation
 
-## Module 4: Generative AI Security
+### Module 4: Generative AI Security
 
 - **Generative AI Fundamentals**
   - Introduction to generative AI
@@ -469,7 +501,7 @@ Please see [here](./CONTRIBUTING.md)
   - Model cloning techniques
   - Defense strategies for advanced attacks
 
-## Module 5: Defensive Strategies and Operations
+### Module 5: Defensive Strategies and Operations
 
 - **Secure-by-Design AI**
   - Secure-by-design AI principles
