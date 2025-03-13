@@ -80,6 +80,41 @@ services:
       - REDAIRANGE_PORT=5002
 ```
 
+#### Recommended `docker-compose.yml` for Windows/Linux User
+
+Use the following configuration as your `docker-compose.yml`:
+
+```yaml
+services:
+  redairange:
+    image: erdemozgen/redairange:1
+    restart: unless-stopped
+    ports:
+      # Host Port : Container Port
+      #- 5001:5001
+      - 5002:5002
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+        
+      # If you want to use private registries, you need to share the auth file with redairange:
+      # - /root/.docker/:/root/.docker
+
+      # Stacks Directory
+      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
+      # ⚠️ 1. FULL path only. No relative path (MUST)
+      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
+      # macOs use full path like: 
+      #- /Users/yourusername/Desktop/RedAiRange/opt/stacks:/Users/yourusername/Desktop/RedAiRange/opt/stacks
+      - ./opt/stacks:/opt/stacks
+    environment:
+      # Tell redairange where is your stacks directory
+      #- REDAIRANGE_STACKS_DIR=/Users/yourusername/Desktop/RedAiRange/opt/stacks
+      - REDAIRANGE_STACKS_DIR=/opt/stacks
+      - REDAIRANGE_PORT=5002
+
+```
 ---
 
 ### Native Development Server (Optional)
