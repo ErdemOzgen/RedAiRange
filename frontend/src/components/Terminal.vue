@@ -69,6 +69,7 @@ export default {
             first: true,
             terminalInputBuffer: "",
             cursorPosition: 0,
+            resizeObserver: null,
         };
     },
     created() {
@@ -83,8 +84,14 @@ export default {
 
         this.terminal = new Terminal({
             fontSize: 14,
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'JetBrains Mono', 'Cascadia Mono', Consolas, monospace",
+            fontWeight: "400",
+            fontWeightBold: "700",
+            letterSpacing: 0,
+            lineHeight: 1,
             cursorBlink,
+            convertEol: true,
+            rescaleOverlappingGlyphs: false,
             cols: this.cols,
             rows: this.rows,
         });
@@ -129,10 +136,13 @@ export default {
         }
         // Fit the terminal width to the div container size after terminal is created.
         this.updateTerminalSize();
+        this.fitWhenFontsReady();
+        this.observeTerminalContainer();
     },
 
     unmounted() {
         window.removeEventListener("resize", this.onResizeEvent); // Remove the resize event listener from the window object.
+        this.resizeObserver?.disconnect();
         this.$root.unbindTerminal(this.name);
         this.terminal.dispose();
     },
@@ -231,10 +241,37 @@ export default {
             }
             this.terminalFitAddOn.fit();
         },
+
+        fitWhenFontsReady() {
+            if (typeof document === "undefined" || !document.fonts || !document.fonts.ready) {
+                return;
+            }
+
+            document.fonts.ready.then(() => {
+                this.onResizeEvent();
+            }).catch(() => {
+                // Ignore font-load errors; terminal remains usable with fallback fonts.
+            });
+        },
+
+        observeTerminalContainer() {
+            if (typeof ResizeObserver === "undefined") {
+                return;
+            }
+
+            this.resizeObserver = new ResizeObserver(() => {
+                this.onResizeEvent();
+            });
+
+            this.resizeObserver.observe(this.$refs.terminal);
+        },
         /**
          * Handles the resize event of the terminal component.
          */
         onResizeEvent() {
+            if (!this.terminalFitAddOn) {
+                return;
+            }
             this.terminalFitAddOn.fit();
             let rows = this.terminal.rows;
             let cols = this.terminal.cols;
@@ -247,6 +284,11 @@ export default {
 <style scoped lang="scss">
 .main-terminal {
     height: 100%;
+
+    :deep(.xterm-rows span) {
+        font-variant-ligatures: none;
+        letter-spacing: 0 !important;
+    }
 }
 </style>
 

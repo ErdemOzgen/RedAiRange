@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions } from "jsonwebtoken";
 import { R } from "redbean-node";
 import { BeanModel } from "redbean-node/dist/bean-model";
 import { generatePasswordHash, shake256, SHAKE256_LENGTH } from "../password-hash";
@@ -14,7 +14,7 @@ export class User extends BeanModel {
     static async resetPassword(userID : number, newPassword : string) {
         await R.exec("UPDATE `user` SET password = ? WHERE id = ? ", [
             generatePasswordHash(newPassword),
-            userID
+            String(userID)
         ]);
     }
 
@@ -35,10 +35,14 @@ export class User extends BeanModel {
      * @returns {string} the JsonWebToken as a string
      */
     static createJWT(user : User, jwtSecret : string) {
+        const jwtExpiresIn = (process.env.REDAIRANGE_JWT_EXPIRES_IN || "7d") as SignOptions["expiresIn"];
+
         return jwt.sign({
             username: user.username,
             h: shake256(user.password, SHAKE256_LENGTH),
-        }, jwtSecret);
+        }, jwtSecret, {
+            expiresIn: jwtExpiresIn,
+        });
     }
 
 }

@@ -2,10 +2,9 @@
 
 ![](./frontend/public/redai.png)
 
-Red AI Range (RAR) is a comprehensive security platform designed specifically for AI red teaming and vulnerability assessment. It creates realistic environments where security professionals can systematically discover, analyze, and mitigate AI vulnerabilities through controlled testing scenarios.
+Red AI Range is a professional platform for AI security assessment, AI red team operations, and vulnerability research. It provides controlled and repeatable environments where teams can test AI systems, validate defenses, and train personnel with practical scenarios.
 
-As organizations increasingly integrate AI systems into critical infrastructure, the need for robust security testing has become essential. RAR addresses this need by providing a standardized framework that consolidates various AI vulnerabilities in one accessible environment for both academic research and industrial security operations.
-
+As AI adoption grows across critical systems, organizations need a structured way to evaluate security risk. Red AI Range addresses that need with a unified platform that combines vulnerable targets, security tooling, operational controls, and documentation support.
 
 ![](https://github.com/ErdemOzgen/RedAiRange/blob/main/imgs/rar.gif)
 
@@ -19,238 +18,165 @@ As organizations increasingly integrate AI systems into critical infrastructure,
 
 ## Installation and Quick Start
 
-You can run **RedAIRange (RAR)** using Docker without limitations compared to a native setup. Follow the instructions below carefully for a seamless installation.
-
-
 ### Docker Setup
 
-1. **Clone the Repository:**
+1. Clone the repository.
 
 ```bash
 git clone https://github.com/ErdemOzgen/RedAiRange.git
 cd RedAiRange
 ```
 
-2. **Start Docker Compose:**
+2. Start the platform.
 
 ```bash
 docker compose up -d
 ```
-This command will start the Red AI Range for you and make it accessible at http://localhost:5002 if you haven't changed the port on compose.yaml file.
 
-#### ⚠️ Important Note for macOS Users
+By default, the platform is available at http://localhost:5002.
 
-On macOS, Docker may encounter file sharing issues. **Always use the full absolute path** when configuring volumes to avoid problems.
+### Docker Compose Example for macOS
 
----
-
-#### Recommended `docker-compose.yml` for MacOS User
-
-Use the following configuration as your `docker-compose.yml`:
+If you are on macOS, always use a full absolute path for stack volumes.
 
 ```yaml
 services:
   redairange:
     image: erdemozgen/redairange:1
-    restart: unless-stopped
+    restart: always
     ports:
-      # Host Port : Container Port
-      #- 5001:5001
       - 5002:5002
-
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/app/data
-
-      # To use private Docker registries, share the auth file:
-      # - /root/.docker/:/root/.docker
-
-      # ⚠️ Stacks Directory Configuration
-      # Ensure the following:
-      # 1. Use FULL absolute paths. Do NOT use relative paths.
-      # 2. Host path and container path MUST match exactly.
-      # macOS Example:
-
       - /Users/yourusername/Desktop/RedAiRange/opt/stacks:/Users/yourusername/Desktop/RedAiRange/opt/stacks
-      #- ./opt/stacks:/opt/stacks # for linux and windows user you can use this
     environment:
-      # Define stacks directory explicitly:
       - REDAIRANGE_STACKS_DIR=/Users/yourusername/Desktop/RedAiRange/opt/stacks
-      #- REDAIRANGE_STACKS_DIR=/opt/stacks # for linux and windows user you can use this
       - REDAIRANGE_PORT=5002
 ```
 
-#### Recommended `docker-compose.yml` for Windows/Linux User
-
-Use the following configuration as your `docker-compose.yml`:
+### Docker Compose Example for Linux and Windows
 
 ```yaml
 services:
   redairange:
     image: erdemozgen/redairange:1
-    restart: unless-stopped
+    restart: always
     ports:
-      # Host Port : Container Port
-      #- 5001:5001
       - 5002:5002
-
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/app/data
-        
-      # If you want to use private registries, you need to share the auth file with redairange:
-      # - /root/.docker/:/root/.docker
-
-      # Stacks Directory
-      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
-      # ⚠️ 1. FULL path only. No relative path (MUST)
-      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
-      # macOs use full path like: 
-      #- /Users/yourusername/Desktop/RedAiRange/opt/stacks:/Users/yourusername/Desktop/RedAiRange/opt/stacks
       - ./opt/stacks:/opt/stacks
     environment:
-      # Tell redairange where is your stacks directory
-      #- REDAIRANGE_STACKS_DIR=/Users/yourusername/Desktop/RedAiRange/opt/stacks
       - REDAIRANGE_STACKS_DIR=/opt/stacks
       - REDAIRANGE_PORT=5002
-
 ```
----
 
-### Native Development Server (Optional)
-
-If you prefer running RAR locally for development purposes:
-
-1. **Install Node.js:**
+### Optional Native Development Mode
 
 ```bash
 nvm install v18.16.0
 nvm use v18.16.0
-```
-
-2. **Start Development Server:**
-
-```bash
-rm package-lock.json # You may need this
 npm install
 npm run dev
 ```
 
-Ensure all dependencies are correctly installed.
+### Optional Security Environment Variables
 
+| Variable | Default | Description |
+| --- | --- | --- |
+| REDAIRANGE_JWT_EXPIRES_IN | 7d | Sets JWT lifetime, for example 12h, 7d, 30d |
+| REDAIRANGE_CONSOLE_ALLOWLIST | docker,ls,cd,dir,cat,echo,pwd | Defines allowed commands for the built in console |
+| REDAIRANGE_AGENT_CREDENTIALS_KEY | auto generated | Optional key for credential encryption at rest |
+| REDAIRANGE_WS_ORIGIN_CHECK | strict | strict enforces host check, bypass disables it |
 
-### Reminder About Docker Containers
+Example:
 
-As it will be elaborately mentioned in following sections, RAR operates as a Docker container while controlling other Docker containers through the Docker socket mounted as a volume. All scenarios, vulnerable AI components and other entities take place as a Docker container and therefore, a Docker image. Due to the nature of AI components, size of these images can be very big and take some time to be installed and run. This will probably be the case with your own Docker containers created in RAR. At the initialization, you don't need lots of space, resources or time but consider that these needs can drastically change according to your purposes with the RAR.
+```yaml
+environment:
+  - REDAIRANGE_STACKS_DIR=/opt/stacks
+  - REDAIRANGE_PORT=5002
+  - REDAIRANGE_JWT_EXPIRES_IN=12h
+  - REDAIRANGE_CONSOLE_ALLOWLIST=docker,ls,cd,pwd
+  - REDAIRANGE_WS_ORIGIN_CHECK=strict
+```
 
-## Features and Capabilities
+### Architecture Note
 
-### Red Team Operations Support
+The platform runs as a Docker container and manages scenario containers through the mounted Docker socket. This model provides strong isolation, clean reset workflows, and consistent behavior across environments.
 
-RAR serves as a complete operational platform for red teams focused on AI security. It enables teams to:
+## Key Capabilities
 
-- Conduct systematic assessments of AI system security boundaries
-- Simulate sophisticated attack scenarios against production-like environments
-- Document and report findings in a standardized format
-- Train new team members on AI-specific attack vectors
-- Develop custom testing methodologies for proprietary AI systems
-- Validate the effectiveness of security controls and mitigations
+### AI Security Operations
 
-### Containerized Architecture
+* Structured vulnerability assessment workflows
+* Repeatable attack and defense exercises
+* Standardized reporting and knowledge capture
+* Team training support for AI security programs
 
-Due to the inherent complexity of AI libraries and their dependencies, RAR implements a sophisticated Docker-based architecture. This approach resolves the nearly impossible task of installing multiple, often conflicting AI frameworks in a single environment. The containerized structure:
+### Container Based Scenario Management
 
-- Isolates conflicting dependencies between different AI frameworks
-- Maintains consistent testing environments across deployments
-- Enables rapid reset of testing environments to baseline configurations
-- Supports parallel testing of multiple vulnerability types
+* Isolated dependencies for each scenario
+* Reproducible environments for testing and validation
+* Fast reset and cleanup of test infrastructure
+* Parallel operation of multiple scenarios
 
-### Advanced Stack Management System
+### Deployment Controls
 
-RAR features a specialized stack management system that streamlines the preparation and deployment of Docker containers. The system includes dedicated configuration areas for:
+* Arsenal mode for security tools
+* Target mode for vulnerable AI systems
+* Compose mode for custom stack workflows
 
-- Vulnerable AI system deployment specifications
-- Testing tool configuration and deployment parameters
-- Automatic generation of docker-compose files with appropriate networking
-- Environment variable management for secure credential handling
+### Remote Agent Support
 
-Each configuration area guides users through the proper setup of either vulnerability targets or testing tools, ensuring consistent deployments.
+* Secure connections to remote Red AI Range nodes
+* Central management for distributed teams
+* Support for specialized infrastructure such as GPU systems
 
-### Intuitive Deployment Controls
+### Session Recording
 
-The platform offers streamlined deployment options through a user-friendly interface:
+* Video recording for demonstrations and training
+* Timestamp based activity tracking
+* Download support for audit and knowledge transfer
 
-- **Arsenal Button**: Deploys containers with security testing tools, vulnerability scanners, and exploitation frameworks necessary for comprehensive AI security assessment (appends "_arsenal" to stack name for clear identification)
-- **Target Button**: Deploys containers with intentionally vulnerable AI systems configured for specific testing scenarios (appends "_ai_target" to stack name)
-- **Compose Button**: Creates test stacks without name modifications for development and customization purposes
+### Docker in Docker Design
 
-### Remote Agent Architecture
+* Clear separation between host and scenario runtime
+* Predictable resource usage and cleanup
+* Consistent behavior on different host platforms
 
-RAR includes a sophisticated agent system that enables connections to remote RAR installations using secure authentication mechanisms. This distributed architecture allows security teams to:
+## Operational Use Cases
 
-- Leverage specialized hardware resources (such as GPU clusters for testing compute-intensive AI vulnerabilities)
-- Coordinate testing activities across geographically distributed teams
-- Centralize control of multiple testing environments from a single management console
-- Deploy specialized testing environments on cloud platforms when needed
+### Security Research Teams
 
-For example, teams can connect to an AWS-hosted RAR instance with GPU resources to test vulnerabilities in large language models that require significant computational power, all controlled through a unified interface.
+* Explore new AI attack vectors
+* Validate proof of concept exploits
+* Publish reproducible findings
 
-### Comprehensive Recording Capabilities
+### Enterprise Security Teams
 
-The platform includes built-in session recording functionality that supports knowledge transfer and documentation requirements:
+* Test AI systems before production release
+* Run recurring security validation
+* Train analysts with practical scenarios
 
-- High-quality video capture of testing sessions
-- Timestamped activity logging for detailed review
-- Secure storage and download options for training materials
-- Customizable recording parameters for different documentation needs
+### Academic and Training Programs
 
-This feature is particularly valuable for creating training materials and maintaining documentation of vulnerability demonstrations for stakeholders.
+* Deliver practical AI security education
+* Run labs and workshops in a controlled environment
+* Build standard training paths for AI risk topics
 
-### Docker-in-Docker Implementation
+## Interface Overview
 
-RAR operates as a Docker container while controlling other Docker containers through the Docker socket mounted as a volume. This sophisticated architecture provides numerous advantages:
+The interface is designed to simplify scenario deployment and daily operations.
 
-- **Enhanced Isolation**: Each testing component operates in a strictly controlled environment
-- **Precise Resource Management**: Computing resources can be allocated specifically to the needs of individual test scenarios
-- **Efficient Cleanup**: Testing environments can be destroyed without residual artifacts
-- **Version Control**: Specific versions of AI frameworks can be maintained for consistent vulnerability reproduction
-- **Parallel Operations**: Multiple testing scenarios can be executed simultaneously without interference
-- **Simplified Deployment**: Complex installation procedures are encapsulated within container definitions
-- **Cross-Platform Consistency**: Testing environments remain consistent regardless of the host system
+### Main Navigation
 
-## Applications and Use Cases
+* Range Manual for internal documentation
+* Compose for custom environment deployment
+* Arsenal for security tool deployment
+* Target Machines for vulnerable scenario deployment
 
-RAR serves as a centralized platform for security professionals across various domains:
-
-### For Security Researchers
-- Systematic exploration of novel AI attack vectors
-- Controlled testing of theoretical vulnerabilities
-- Development of new detection and mitigation techniques
-- Publication of reproducible security findings
-
-### For Corporate Security Teams
-- Validation of AI system security before production deployment
-- Regular security assessments of deployed AI systems
-- Training and skill development for security personnel
-- Demonstration of security capabilities to stakeholders
-
-### For Educational Institutions
-- Hands-on training in AI security principles
-- Practical workshops on emerging AI threats
-- Research into fundamental AI security challenges
-- Development of standardized AI security curricula
-
-## UI Overview and Getting Started
-
-The Red AI Range (RAR) dashboard provides a comprehensive user interface designed to simplify AI security testing and vulnerability assessment. This centralized interface supports streamlined deployment and management of various security scenarios and operational tools.
-
-### Main Components of the UI
-
-#### Top Navigation
-- **Range Manual**: Access detailed documentation and guidelines.
-![](./imgs/range-manual.png)
-
-- **Compose**: Deploy custom testing stacks or environments.
 ![](./imgs/console.png)
 
 - **Arsenal**: Launch security assessment tools and exploitation frameworks.
@@ -323,8 +249,9 @@ Contributions are welcome! Please see [CONTRIBUTING.MD](./CONTRIBUTING.md) for d
 Enjoy exploring and securing AI systems with RedAIRange! If you have any questions or run into issues, feel free to open an issue or start a discussion in this repository.
 
 
-## Red AI Range (RAR) Training Modules
-These are predefined and suggested modules that can be followed for getting trained about AI security. Scenarios mentioned both above and in RAR aim to teach about these topics.
+## Training Modules
+
+The training path is organized into five modules.
 
 ### Module 1: Foundations of AI Security
 - **AI/ML Fundamentals**

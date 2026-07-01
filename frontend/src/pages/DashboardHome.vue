@@ -50,6 +50,10 @@
                     </div>
 
                     <button class="btn-normal btn mb-4" @click="convertDockerRunAsArsenal">{{ $t("Convert to Arsenal") }}</button>
+
+                    <h2 class="mb-3">Scenario Builder Wizard</h2>
+                    <p class="text-muted">Generate a ready-to-edit compose template for target, arsenal, or generic scenarios.</p>
+                    <button class="btn btn-primary mb-4" @click="openScenarioBuilder">Open Scenario Builder</button>
                 </div>
                 <!-- Right -->
                 <div class="col-md-5">
@@ -286,6 +290,10 @@ export default {
 
 
         
+        },
+
+        openScenarioBuilder() {
+            this.$router.push("/scenario-builder");
         },
 
         /**

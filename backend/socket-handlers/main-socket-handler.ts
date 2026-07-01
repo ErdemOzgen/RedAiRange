@@ -17,7 +17,14 @@ import {
 } from "../util-server";
 import { passwordStrength } from "check-password-strength";
 import jwt from "jsonwebtoken";
+import notp from "notp";
 import { Settings } from "../settings";
+import { generateScenarioBuilderTemplate, getScenarioPresetList } from "../scenario-builder";
+
+const twoFAVerifyOptions = {
+    window: 1,
+    time: 30,
+};
 
 export class MainSocketHandler extends SocketHandler {
     create(socket : RedAiRangeSocket, server : RedAiRangeServer) {
@@ -163,7 +170,11 @@ export class MainSocketHandler extends SocketHandler {
                 }
 
                 if (data.token) {
-                    // @ts-ignore
+                    if (!await twoFaRateLimiter.pass(callback)) {
+                        log.info("auth", `Too many 2FA attempts for user ${data.username}. IP=${clientIP}`);
+                        return;
+                    }
+
                     const verify = notp.totp.verify(data.token, user.twofa_secret, twoFAVerifyOptions);
 
                     if (user.twofa_last_token !== data.token && verify) {
@@ -315,6 +326,35 @@ export class MainSocketHandler extends SocketHandler {
                 callback({
                     ok: true,
                     composeTemplate,
+                });
+            } catch (e) {
+                callbackError(e, callback);
+            }
+        });
+
+        socket.on("scenarioBuilderPresetList", async (callback) => {
+            try {
+                checkLogin(socket);
+
+                callback({
+                    ok: true,
+                    presets: getScenarioPresetList(),
+                });
+            } catch (e) {
+                callbackError(e, callback);
+            }
+        });
+
+        socket.on("scenarioBuilderGenerate", async (requestData : unknown, callback) => {
+            try {
+                checkLogin(socket);
+
+                const generated = generateScenarioBuilderTemplate(requestData);
+
+                callback({
+                    ok: true,
+                    composeYAML: generated.composeYAML,
+                    composeENV: generated.composeENV,
                 });
             } catch (e) {
                 callbackError(e, callback);

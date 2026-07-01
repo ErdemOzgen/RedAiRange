@@ -12,6 +12,26 @@ import {
 import { sync as commandExistsSync } from "command-exists";
 import { log } from "./log";
 
+const BACKSPACE_KEY = "\u007f";
+const CTRL_C_KEY = "\u0003";
+const ENTER_KEY = "\u000d";
+const DEFAULT_TERM_TYPE = process.env.REDAIRANGE_TERM || "xterm-256color";
+
+function getAllowedConsoleCommandSet() : Set<string> {
+    const configured = process.env.REDAIRANGE_CONSOLE_ALLOWLIST;
+
+    if (!configured || configured.trim().length === 0) {
+        return new Set(allowedCommandList.map((command) => command.toLowerCase()));
+    }
+
+    return new Set(
+        configured
+            .split(",")
+            .map((command) => command.trim().toLowerCase())
+            .filter(Boolean)
+    );
+}
+
 /**
  * Terminal for running commands, no user interaction
  */
@@ -114,11 +134,24 @@ export class Terminal {
         }
 
         try {
+            const spawnEnv = {
+                ...process.env,
+            };
+
+            if (this.file === "docker") {
+                const args = Array.isArray(this.args) ? this.args : [ this.args ];
+                if (args.includes("compose") && !spawnEnv.COMPOSE_ANSI) {
+                    spawnEnv.COMPOSE_ANSI = process.env.REDAIRANGE_COMPOSE_ANSI || "never";
+                }
+            }
+
             this._ptyProcess = pty.spawn(this.file, this.args, {
-                name: this.name,
+                // PTY "name" maps to TERM. Use a real terminal type, not the dynamic session name.
+                name: DEFAULT_TERM_TYPE,
                 cwd: this.cwd,
                 cols: TERMINAL_COLS,
                 rows: this.rows,
+                env: spawnEnv,
             });
 
             // On Data
@@ -269,6 +302,9 @@ export class InteractiveTerminal extends Terminal {
  * User interactive terminal that use bash or powershell with limited commands such as docker, ls, cd, dir
  */
 export class MainTerminal extends InteractiveTerminal {
+    private currentCommandInput = "";
+    private commandInputDirty = false;
+
     constructor(server : RedAiRangeServer, name : string) {
         let shell;
 
@@ -285,22 +321,56 @@ export class MainTerminal extends InteractiveTerminal {
     }
 
     public write(input : string) {
-        // For like Ctrl + C
-        if (allowedRawKeys.includes(input)) {
+        if (input === CTRL_C_KEY) {
+            this.currentCommandInput = "";
+            this.commandInputDirty = false;
             super.write(input);
             return;
         }
 
-        // Check if the command is allowed
-        const cmdParts = input.split(" ");
-        const executable = cmdParts[0].trim();
-        log.debug("console", "Executable: " + executable);
-        log.debug("console", "Executable length: " + executable.length);
+        if (input === BACKSPACE_KEY) {
+            this.currentCommandInput = this.currentCommandInput.slice(0, -1);
+            super.write(input);
+            return;
+        }
 
-        // TODO: For security we can enable this later
-        // if (!allowedCommandList.includes(executable)) {
-        //     throw new Error("Command not allowed.");
-        // }
+        if (input.includes(ENTER_KEY)) {
+            if (this.commandInputDirty) {
+                this.currentCommandInput = "";
+                this.commandInputDirty = false;
+                throw new Error("Command editing shortcuts are disabled in restricted console.");
+            }
+
+            const inputParts = input.split(ENTER_KEY);
+            this.currentCommandInput += inputParts[0] || "";
+
+            const executable = this.currentCommandInput.trim().split(/\s+/)[0]?.toLowerCase();
+            this.currentCommandInput = "";
+
+            if (executable) {
+                const allowedCommandSet = getAllowedConsoleCommandSet();
+
+                if (!allowedCommandSet.has(executable)) {
+                    log.warn("console", `Blocked command: ${executable}`);
+                    throw new Error(`Command is not allowed: ${executable}`);
+                }
+            }
+
+            super.write(input);
+            return;
+        }
+
+        // For like Ctrl + C
+        if (allowedRawKeys.includes(input)) {
+            this.commandInputDirty = true;
+            super.write(input);
+            return;
+        }
+
+        if (this.currentCommandInput.length === 0) {
+            this.commandInputDirty = false;
+        }
+        this.currentCommandInput += input;
         super.write(input);
     }
 }

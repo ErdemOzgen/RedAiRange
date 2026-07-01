@@ -45,6 +45,16 @@
                         <span class="text-white">{{ $t("Target Machines") }}</span>
                         </router-link>
                     </div>
+
+                    <div class="col-12 col-md-6 mb-3 d-flex">
+                        <router-link
+                            to="/scenario-builder"
+                            class="btn btn-primary w-100 d-flex align-items-center justify-content-center"
+                        >
+                            <font-awesome-icon icon="wrench" class="text-white" />
+                            <span class="text-white">Scenario Builder</span>
+                        </router-link>
+                    </div>
                 </div>
 
                 <StackList :scrollbar="true" />

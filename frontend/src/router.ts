@@ -19,6 +19,7 @@ import Manual from "./pages/Manual.vue";
 import ComposeTarget from "./pages/ComposeTarget.vue";
 import ComposeArsenal from "./pages/ComposeArsenal.vue";
 import Record from "./pages/Record.vue";
+import ScenarioBuilderWizard from "./pages/ScenarioBuilderWizard.vue";
 
 const routes = [
     {
@@ -53,6 +54,10 @@ const routes = [
                             {
                                 path: "/composearsenal",
                                 component: ComposeArsenal,
+                            },
+                            {
+                                path: "/scenario-builder",
+                                component: ScenarioBuilderWizard,
                             },
                             {
                                 path: "/compose/:stackName/:endpoint",

@@ -1,11 +1,15 @@
-#FROM node:22-bookworm-slim
-FROM node:18.16.0
+FROM node:22-bookworm-slim
+#FROM node:18.16.0
 
 RUN apt update && apt install --yes --no-install-recommends \
     curl \
     ca-certificates \
     gnupg \
     unzip \
+     python3 \
+     python-is-python3 \
+     make \
+     g++ \
     dumb-init \
     && install -m 0755 -d /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \

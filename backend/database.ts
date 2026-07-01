@@ -143,7 +143,7 @@ export class Database {
         R.freeze(true);
 
         if (autoloadModels) {
-            R.autoloadModels("./backend/models", "ts");
+            R.autoloadModels("./backend/models");
         }
 
         if (dbConfig.type === "sqlite") {

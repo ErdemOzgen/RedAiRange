@@ -81,7 +81,7 @@ export class AgentManager {
         let bean = R.dispense("agent") as Agent;
         bean.url = url;
         bean.username = username;
-        bean.password = password;
+        bean.password = await Agent.encryptPassword(password);
         await R.store(bean);
         return bean;
     }
@@ -215,7 +215,19 @@ export class AgentManager {
 
         for (let endpoint in list) {
             let agent = list[endpoint];
-            this.connect(agent.url, agent.username, agent.password);
+            try {
+                const password = await Agent.getConnectionPassword(agent);
+                this.connect(agent.url, agent.username, password);
+            } catch (e) {
+                if (e instanceof Error) {
+                    log.error("agent-manager", `Failed to decrypt credentials for ${endpoint}: ${e.message}`);
+                }
+                this.socket.emit("agentStatus", {
+                    endpoint,
+                    status: "offline",
+                    msg: `${endpoint}: Invalid agent credentials encryption`,
+                });
+            }
         }
     }
 

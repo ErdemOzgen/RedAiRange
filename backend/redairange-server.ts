@@ -240,23 +240,46 @@ export class RedAiRangeServer {
             };
         }
 
+        const wsOriginCheckModeRaw = process.env.REDAIRANGE_WS_ORIGIN_CHECK || "strict";
+        const wsOriginCheckMode = wsOriginCheckModeRaw.toLowerCase();
+        const wsOriginCheckBypass = isDev || wsOriginCheckMode === "bypass";
+
+        if (!isDev && process.env.UPTIME_KUMA_WS_ORIGIN_CHECK === "bypass") {
+            log.warn("auth", "UPTIME_KUMA_WS_ORIGIN_CHECK is deprecated and ignored. Use REDAIRANGE_WS_ORIGIN_CHECK=bypass if needed.");
+        }
+
+        if (![ "strict", "bypass" ].includes(wsOriginCheckMode)) {
+            log.warn("auth", `Invalid REDAIRANGE_WS_ORIGIN_CHECK=${wsOriginCheckModeRaw}, fallback to strict`);
+        }
+
+        if (!isDev && wsOriginCheckBypass) {
+            log.warn("auth", "WebSocket origin check bypass is enabled in production");
+        }
+
         // Create Socket.io
         this.io = new socketIO.Server(this.httpServer, {
             cors,
             allowRequest: (req, callback) => {
                 let isOriginValid = true;
-                const bypass = isDev || process.env.UPTIME_KUMA_WS_ORIGIN_CHECK === "bypass";
+                const bypass = wsOriginCheckBypass;
 
                 if (!bypass) {
-                    let host = req.headers.host;
+                    const host = req.headers.host;
 
                     // If this is set, it means the request is from the browser
-                    let origin = req.headers.origin;
+                    const origin = req.headers.origin;
+
+                    if (!host) {
+                        isOriginValid = false;
+                        log.error("auth", `Host header is not set, IP: ${req.socket.remoteAddress}`);
+                        callback(null, isOriginValid);
+                        return;
+                    }
 
                     // If this is from the browser, check if the origin is allowed
                     if (origin) {
                         try {
-                            let originURL = new URL(origin);
+                            const originURL = new URL(origin);
 
                             if (host !== originURL.host) {
                                 isOriginValid = false;
@@ -268,7 +291,8 @@ export class RedAiRangeServer {
                             log.error("auth", `Invalid origin url (${origin}), IP: ${req.socket.remoteAddress}`);
                         }
                     } else {
-                        log.info("auth", `Origin is not set, IP: ${req.socket.remoteAddress}`);
+                        // Non-browser sockets may not send origin header
+                        log.debug("auth", `Origin is not set, IP: ${req.socket.remoteAddress}`);
                     }
                 } else {
                     log.debug("auth", "Origin check is bypassed");
